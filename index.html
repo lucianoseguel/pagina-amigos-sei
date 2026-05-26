@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/main.css">
+  <title>Seminarios e Institutos - Área Sudamérica Sur</title>
+  
+  <!-- CDN de Tailwind CSS para estilos modernos y rápidos -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Configuración personalizada de Tailwind para colores institucionales -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandBlue: {
+              light: '#1e40af',
+              DEFAULT: '#0b2f64', // Azul institucional clásico
+              dark: '#031b3d',
+            },
+            brandGold: {
+              light: '#fcd34d',
+              DEFAULT: '#d97706', // Oro/Ámbar para acentos cálidos
+              dark: '#b45309',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- 
+    ========================================================================
+    COMPONENTE: ESTILOS PERSONALIZADOS (CSS)
+    Si decides separar tus archivos, puedes copiar todo este bloque <style>
+    y pegarlo en un archivo llamado 'styles.css'. Luego lo enlazas en el HTML con:
+    <link rel="stylesheet" href="styles.css">
+    ========================================================================
+  -->
+  <style>
+
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col justify-between">
+
+  <!-- 
+    ========================================================================
+    COMPONENTE: NAVBAR (BARRA DE NAVEGACIÓN RESPONSIVA)
+    ========================================================================
+  -->
+  <header class="bg-brandBlue text-white sticky top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <!-- Logotipo / Identidad de la Página -->
+      <a href="#" class="flex flex-col justify-center select-none group">
+        <span class="font-bold text-sm sm:text-base md:text-lg tracking-wide group-hover:text-amber-300 transition-colors">
+          SEMINARIOS E INSTITUTOS
+        </span>
+        <span class="text-[10px] sm:text-[11px] text-slate-300 tracking-wider">
+          Área Sudamérica Sur
+        </span>
+      </a>
+
+      <!-- Navegación para PC (Pantallas medianas y grandes) -->
+      <nav class="hidden md:flex space-x-8 text-sm font-medium">
+        <a href="#" class="hover:text-amber-300 transition-colors border-b-2 border-amber-400 pb-1">Inicio</a>
+        <a href="#seminario" class="hover:text-amber-300 transition-colors border-b-2 border-transparent hover:border-amber-400 pb-1">Seminarios</a>
+        <a href="#instituto" class="hover:text-amber-300 transition-colors border-b-2 border-transparent hover:border-amber-400 pb-1">Institutos</a>
+        <a href="#" class="hover:text-amber-300 transition-colors border-b-2 border-transparent hover:border-amber-400 pb-1">Recursos</a>
+        <a href="#" class="hover:text-amber-300 transition-colors border-b-2 border-transparent hover:border-amber-400 pb-1">Contacto</a>
+      </nav>
+
+      <!-- Botón de Menú Hamburguesa (Solo visible en móviles/tablets) -->
+      <button 
+        id="menu-btn" 
+        class="md:hidden flex flex-col justify-between w-6 h-4 focus:outline-none z-50"
+        aria-label="Abrir menú"
+      >
+        <span class="burger-line line-1 w-full h-0.5 bg-white rounded"></span>
+        <span class="burger-line line-2 w-full h-0.5 bg-white rounded"></span>
+        <span class="burger-line line-3 w-full h-0.5 bg-white rounded"></span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- 
+    ========================================================================
+    COMPONENTE: MENÚ LATERAL OFF-CANVAS (MOBILE)
+    ========================================================================
+  -->
+  <!-- Fondo oscuro semitransparente detrás del menú lateral -->
+  <div 
+    id="menu-overlay" 
+    class="fixed inset-0 bg-slate-900/60 z-40 hidden backdrop-blur-sm transition-opacity duration-300 opacity-0"
+  ></div>
+
+  <!-- Contenedor del Menú Lateral Deslizable -->
+  <aside 
+    id="mobile-menu" 
+    class="fixed top-0 right-0 h-full w-72 bg-brandBlue text-white shadow-2xl z-40 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between p-6 pt-24"
+  >
+    <nav class="flex flex-col space-y-6 text-lg font-semibold">
+      <a href="#" class="mobile-link text-amber-300 flex items-center gap-3">
+        <span>Inicio</span>
+      </a>
+      <a href="#seminario" class="mobile-link hover:text-amber-300 transition-colors flex items-center gap-3">
+        <span>Seminarios (14-17)</span>
+      </a>
+      <a href="#instituto" class="mobile-link hover:text-amber-300 transition-colors flex items-center gap-3">
+        <span>Institutos (18-35)</span>
+      </a>
+      <a href="#" class="mobile-link hover:text-amber-300 transition-colors flex items-center gap-3">
+        <span>Recursos Útiles</span>
+      </a>
+      <a href="#" class="mobile-link hover:text-amber-300 transition-colors flex items-center gap-3">
+        <span>Contacto</span>
+      </a>
+    </nav>
+
+    <!-- Información o Redes en la parte inferior del menú móvil -->
+    <div class="border-t border-slate-700 pt-6 text-xs text-slate-400">
+      <p class="font-semibold text-white">La Iglesia de Jesucristo de los Santos de los Últimos Días</p>
+      <p class="mt-1">Área Sudamérica Sur</p>
+    </div>
+  </aside>
+
+  <!-- 
+    ========================================================================
+    COMPONENTE: HERO Y SECCIÓN DE SELECCIÓN PRINCIPAL
+    ========================================================================
+  -->
+  <main class="flex-grow flex flex-col items-center justify-center py-10 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full animate-fade-in-up">
+    
+    <!-- Encabezado Inspiracional de Bienvenida -->
+    <div class="text-center mb-10 max-w-2xl">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-brandBlue tracking-tight mb-4">
+        ¡Te damos la bienvenida a tu espacio de fe!
+      </h1>
+      <p class="text-base sm:text-lg text-slate-600">
+        Elige tu programa para acceder a lecciones, inscripciones, materiales de estudio y más recursos creados especialmente para ti.
+      </p>
+    </div>
+
+    <!-- 
+      CONTENEDOR DE DOS BOTONES GRANDES (TIPO TARJETAS INTERACTIVAS)
+      Ideal para captar la atención de jóvenes de 14 a 35 años por su dinamismo.
+    -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mb-8">
+      
+      <!-- BOTÓN 1: SEMINARIO (14 a 17 años) -->
+      <button 
+        onclick="irAPagina('seminario')"
+        class="group relative flex flex-col justify-between items-start text-left p-8 rounded-2xl bg-white border border-slate-200 shadow-lg hover:shadow-2xl hover:border-brandBlue/30 hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+      >
+        <!-- Decoración de fondo estilizada en SVG -->
+        <div class="absolute -right-10 -bottom-10 text-slate-100 group-hover:text-brandBlue/5 transition-colors duration-300 pointer-events-none">
+          <svg class="w-48 h-48" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5.89 12.55L12 15.9l6.11-3.35c.42-.23.89-.35 1.39-.35h.5V11L12 15.45 4 11v1.2c0 .5.16.97.55 1.35z"/>
+          </svg>
+        </div>
+
+        <div>
+          <!-- Insignia de edad -->
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-800 mb-4">
+            Edades: 14 a 17 años
+          </span>
+          
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-brandBlue mb-3 group-hover:text-brandBlue-light transition-colors">
+            Seminario
+          </h2>
+          
+          <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-6 max-w-sm">
+            Fortalece tu testimonio de Jesucristo, aprende doctrina clave, y conéctate con jóvenes que comparten tus mismos valores mientras estudian las escrituras.
+          </p>
+        </div>
+
+        <div class="flex items-center text-sm font-bold text-brandBlue group-hover:text-brandGold transition-colors">
+          <span>Ingresar a Seminario</span>
+          <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </div>
+      </button>
+
+      <!-- BOTÓN 2: INSTITUTO (18 a 35 años) -->
+      <button 
+        onclick="irAPagina('instituto')"
+        class="group relative flex flex-col justify-between items-start text-left p-8 rounded-2xl bg-white border border-slate-200 shadow-lg hover:shadow-2xl hover:border-brandGold/30 hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+      >
+        <!-- Decoración de fondo estilizada en SVG -->
+        <div class="absolute -right-10 -bottom-10 text-slate-100 group-hover:text-brandGold/5 transition-colors duration-300 pointer-events-none">
+          <svg class="w-48 h-48" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+          </svg>
+        </div>
+
+        <div>
+          <!-- Insignia de edad -->
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-800 mb-4">
+            Edades: 18 a 35 años
+          </span>
+          
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-brandBlue mb-3 group-hover:text-brandBlue-light transition-colors">
+            Instituto
+          </h2>
+          
+          <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-6 max-w-sm">
+            Encuentra respuestas a las preguntas de la vida, crea amistades duraderas, y asiste a clases inspiradoras que te guiarán en tu camino académico, laboral y espiritual.
+          </p>
+        </div>
+
+        <div class="flex items-center text-sm font-bold text-brandBlue group-hover:text-brandGold transition-colors">
+          <span>Ingresar a Instituto</span>
+          <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </div>
+      </button>
+
+    </div>
+
+    <!-- Mensaje de Feedback / Modal de estado (Evita usar alert() de navegador) -->
+    <div id="status-message" class="hidden w-full max-w-md p-4 rounded-xl bg-slate-100 border border-slate-300 text-center text-sm text-slate-700 animate-pulse">
+      <!-- Se llenará dinámicamente con JavaScript -->
+    </div>
+
+  </main>
+
+  <!-- 
+    ========================================================================
+    COMPONENTE: FOOTER (PIE DE PÁGINA)
+    ========================================================================
+  -->
+  <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 text-xs text-center">
+    <div class="max-w-7xl mx-auto px-4 space-y-3">
+      <p class="font-medium text-slate-300">
+        Esta página web está siendo desarrollada para Seminarios e Institutos de Religión - Área Sudamérica Sur.
+      </p>
+      <p>
+        © 2026. Todos los derechos reservados. No es una publicación oficial de La Iglesia de Jesucristo de los Santos de los Últimos Días.
+      </p>
+    </div>
+  </footer>
+
+  <!-- 
+    ========================================================================
+    COMPONENTE: FUNCIONALIDAD INTERACTIVA (JAVASCRIPT)
+    Si decides separar tus archivos, puedes copiar todo este bloque de código
+    y pegarlo en un archivo llamado 'script.js'. Luego lo enlazas en el HTML con:
+    <script src="script.js"></script>
+    ========================================================================
+  -->
+  <script src="scripts/main.js"> </script>
+</body>
+</html>
