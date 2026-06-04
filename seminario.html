@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seminario - Área Sudamérica Sur</title>
+  
+  <!-- CDN de Tailwind CSS para el diseño responsive y moderno -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Configuración de colores institucionales en Tailwind -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandBlue: {
+              light: '#1e40af',
+              DEFAULT: '#0b2f64', // Azul institucional clásico
+              dark: '#031b3d',
+            },
+            brandGold: {
+              light: '#fcd34d',
+              DEFAULT: '#d97706', // Oro/Ámbar
+              dark: '#b45309',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- 
+    ========================================================================
+    COMPONENTE: ESTILOS PERSONALIZADOS (CSS) - 'seminario.css'
+    Si deseas separar este archivo en seminario.css, copia desde aquí
+    hasta el final de la etiqueta </style> y enlázalo en tu HTML con:
+    <link rel="stylesheet" href="seminario.css">
+    ========================================================================
+  -->
+  <style>
+    /* Estilos de transición para el botón Hamburguesa */
+    .burger-line {
+      transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out;
+    }
+    
+    /* Animación del menú Hamburguesa a X */
+    .active .line-1 {
+      transform: translateY(6px) rotate(45deg);
+    }
+    .active .line-2 {
+      opacity: 0;
+    }
+    .active .line-3 {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    /* Animación de entrada de elementos */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in-up {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    /* Efectos de transición suaves globales */
+    .transition-all-300 {
+      transition: all 0.3s ease-in-out;
+    }
+
+    /* Asegurar que las imágenes del carrusel mantengan proporción */
+    .carousel-image {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col justify-between">
+
+  <!-- 
+    ========================================================================
+    COMPONENTE: NAVBAR (BARRA DE NAVEGACIÓN RESPONSIVA)
+    ========================================================================
+  -->
+  <header class="bg-brandBlue text-white sticky top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <!-- Identidad / Logo -->
+      <a href="#" class="flex flex-col justify-center select-none group">
+        <span class="font-bold text-sm sm:text-base md:text-lg tracking-wide group-hover:text-amber-300 transition-colors">
+          SEMINARIO
+        </span>
+        <span class="text-[10px] sm:text-[11px] text-slate-300 tracking-wider">
+          Área Sudamérica Sur
+        </span>
+      </a>
+
+      <!-- Navegación de Escritorio -->
+       <nav class="hidden md:flex space-x-8 text-sm font-medium">
+        <a href="#" class="hover:text-amber-300 transition-colors border-b-2 border-amber-400 pb-1">Inicio</a>
+        <a href="#seminario" class="hover:text-amber-300 transition-colors border-b-2 border-transparent hover:border-amber-400 pb-1">Seminarios</a>
+        <a href="#instituto" class="hover:text-amber-300 transition-colors border-b-2 border-transparent hover:border-amber-400 pb-1">Institutos</a>
+        <a href="#" class="hover:text-amber-300 transition-colors border-b-2 border-transparent hover:border-amber-400 pb-1">Recursos</a>
+        <a href="#" class="hover:text-amber-300 transition-colors border-b-2 border-transparent hover:border-amber-400 pb-1">Contacto</a>
+      </nav>
+
+      <!-- Menú Hamburguesa para Móviles -->
+      <button 
+        id="menu-btn" 
+        class="md:hidden flex flex-col justify-between w-6 h-4 focus:outline-none z-50"
+        aria-label="Abrir menú móvil"
+      >
+        <span class="burger-line line-1 w-full h-0.5 bg-white rounded"></span>
+        <span class="burger-line line-2 w-full h-0.5 bg-white rounded"></span>
+        <span class="burger-line line-3 w-full h-0.5 bg-white rounded"></span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- 
+    ========================================================================
+    COMPONENTE: MENÚ LATERAL OFF-CANVAS (MOBILE)
+    ========================================================================
+  -->
+  <div 
+    id="menu-overlay" 
+    class="fixed inset-0 bg-slate-900/60 z-40 hidden backdrop-blur-sm transition-opacity duration-300 opacity-0"
+  ></div>
+
+  <aside 
+    id="mobile-menu" 
+    class="fixed top-0 right-0 h-full w-72 bg-brandBlue text-white shadow-2xl z-40 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between p-6 pt-24"
+  >
+    <nav class="flex flex-col space-y-6 text-lg font-semibold">
+      <a href="#" class="mobile-link text-amber-300 flex items-center gap-3">
+        <span>Inicio</span>
+      </a>
+      <a href="#seminario" class="mobile-link hover:text-amber-300 transition-colors flex items-center gap-3">
+        <span>Seminarios (14-17)</span>
+      </a>
+      <a href="#instituto" class="mobile-link hover:text-amber-300 transition-colors flex items-center gap-3">
+        <span>Institutos (18-35)</span>
+      </a>
+      <a href="#" class="mobile-link hover:text-amber-300 transition-colors flex items-center gap-3">
+        <span>Recursos Útiles</span>
+      </a>
+      <a href="#" class="mobile-link hover:text-amber-300 transition-colors flex items-center gap-3">
+        <span>Contacto</span>
+      </a>
+    </nav>
+    <div class="border-t border-slate-700 pt-6 text-xs text-slate-400">
+      <p class="font-semibold text-white">Seminarios e Institutos de Religión</p>
+      <p class="mt-1">Área Sudamérica Sur</p>
+    </div>
+  </aside>
+
+  <!-- 
+    ========================================================================
+    COMPONENTE: HERO SECTION (BIENVENIDA E IMPACTO)
+    ========================================================================
+  -->
+  <section class="relative bg-gradient-to-br from-brandBlue to-brandBlue-dark text-white py-16 sm:py-24 px-4 overflow-hidden">
+    <!-- Ilustración de fondo sutil -->
+    <div class="absolute inset-0 opacity-10 flex items-center justify-center pointer-events-none">
+      <svg class="w-[600px] h-[600px]" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
+      </svg>
+    </div>
+
+    <div class="relative max-w-5xl mx-auto text-center z-10 animate-fade-in-up">
+      <span class="bg-amber-500/20 text-amber-300 px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold tracking-wider uppercase">
+        Programa para Jóvenes de 14 a 17 años
+      </span>
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mt-6 mb-6 leading-tight">
+        Conéctate con tu fe, <br class="hidden sm:inline">
+        <span class="text-amber-400">fortalece tu testimonio</span>
+      </h1>
+      <p class="text-lg sm:text-xl text-slate-200 max-w-2xl mx-auto mb-8 leading-relaxed">
+        Seminario es tu espacio diario para estudiar las escrituras, compartir con amigos increíbles, encontrar paz en un mundo ruidoso y acercarte a Jesucristo.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="#inscripcion" 
+          class="bg-amber-500 hover:bg-amber-600 text-brandBlue-dark font-extrabold text-base px-8 py-4 rounded-xl shadow-lg hover:shadow-amber-500/20 transition-all transform hover:-translate-y-0.5 text-center"
+        >
+          Preinscribirme ahora
+        </a>
+        <a 
+          href="#video-seccion" 
+          class="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold text-base px-8 py-4 rounded-xl transition-all text-center"
+        >
+          Ver Video e Imágenes
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 
+    ========================================================================
+    COMPONENTE: SECCIÓN DE VIDEO (PRIMERO EN LA LISTA)
+    ========================================================================
+  -->
+  <section id="video-seccion" class="py-16 px-4 bg-white border-b border-slate-100">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="mb-8">
+        <span class="text-amber-500 text-sm font-bold uppercase tracking-wider">Inspiración Diaria</span>
+        <h2 class="text-3xl font-extrabold text-brandBlue tracking-tight mt-1">¿Por qué asistir a Seminario?</h2>
+        <p class="text-slate-600 mt-2 max-w-xl mx-auto">
+          Escucha los testimonios de jóvenes de todo el mundo que han encontrado dirección y propósito al iniciar sus mañanas con la palabra de Dios.
+        </p>
+      </div>
+
+      <!-- Contenedor del video responsivo con relación de aspecto 16:9 -->
+      <div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl border-4 border-slate-100 bg-slate-900 transition-all duration-300 hover:shadow-brandBlue/10">
+        <!-- Iframe optimizado de YouTube con controles e inicio limpio -->
+        <iframe 
+          id="promo-video"
+          class="absolute top-0 left-0 w-full h-full"
+          src="https://www.youtube.com/embed/DcH72hbV5Jo?rel=0&modestbranding=1" 
+          title="Invitación personal a asistir a Seminario" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- 
+    ========================================================================
+    COMPONENTE: CARRUSEL DE IMÁGENES (SEGUNDO EN LA LISTA)
+    ========================================================================
+  -->
+  <section id="carrusel-seccion" class="py-16 px-4 bg-slate-100 border-b border-slate-200">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-10">
+        <span class="text-blue-600 text-sm font-bold uppercase tracking-wider font-semibold">Galería de Experiencias</span>
+        <h2 class="text-3xl font-extrabold text-brandBlue tracking-tight mt-1">Tu día en Seminario</h2>
+        <p class="text-slate-600 mt-2 max-w-xl mx-auto">Conoce cómo son nuestras actividades, el estudio dinámico y la gran comunidad que te espera.</p>
+      </div>
+
+      <!-- Contenedor Principal del Carrusel -->
+      <div class="relative h-[300px] sm:h-[450px] rounded-3xl overflow-hidden shadow-xl group">
+        
+        <!-- Diapositivas (Slides) -->
+        <div id="carousel-slides" class="relative w-full h-full">
+          
+          <!-- Slide 1: Estudio de escrituras -->
+          <div class="carousel-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-100">
+            <img 
+              src="https://images.unsplash.com/photo-1504052434569-70ad58565b90?auto=format&fit=crop&w=1200&q=80" 
+              alt="Estudio interactivo de Escrituras" 
+              class="carousel-image"
+              onerror="this.src='https://placehold.co/1200x600/0b2f64/ffffff?text=Estudio+de+Escrituras'"
+            >
+            <!-- Overlay gradiente para el texto -->
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex flex-col justify-end p-6 sm:p-12 text-white">
+              <span class="text-amber-400 text-xs sm:text-sm font-bold uppercase tracking-widest mb-1">Clases Diarias</span>
+              <h3 class="text-xl sm:text-3xl font-bold mb-2">Un hábito que transforma tu mente</h3>
+              <p class="text-slate-200 text-xs sm:text-sm max-w-lg hidden sm:block">Dedicar las primeras horas del día a fortalecer tu espiritualidad te brinda calma e inteligencia para enfrentar los desafíos de la escuela secundaria.</p>
+            </div>
+          </div>
+
+          <!-- Slide 2: Amigos y comunidad -->
+          <div class="carousel-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 pointer-events-none">
+            <img 
+              src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80" 
+              alt="Jóvenes compartiendo en armonía" 
+              class="carousel-image"
+              onerror="this.src='https://placehold.co/1200x600/0b2f64/ffffff?text=Amistades+Verdaderas'"
+            >
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex flex-col justify-end p-6 sm:p-12 text-white">
+              <span class="text-amber-400 text-xs sm:text-sm font-bold uppercase tracking-widest mb-1">Conexión Verdadera</span>
+              <h3 class="text-xl sm:text-3xl font-bold mb-2">Amistades basadas en valores eternos</h3>
+              <p class="text-slate-200 text-xs sm:text-sm max-w-lg hidden sm:block">Rodeate de jóvenes con tus mismas metas que te impulsen a ser tu mejor versión y con quienes compartir momentos inolvidables.</p>
+            </div>
+          </div>
+
+          <!-- Slide 3: Logro académico y espiritual -->
+          <div class="carousel-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 pointer-events-none">
+            <img 
+              src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=80" 
+              alt="Graduación y metas logradas" 
+              class="carousel-image"
+              onerror="this.src='https://placehold.co/1200x600/0b2f64/ffffff?text=Logros+y+Graduacion'"
+            >
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex flex-col justify-end p-6 sm:p-12 text-white">
+              <span class="text-amber-400 text-xs sm:text-sm font-bold uppercase tracking-widest mb-1">Graduación</span>
+              <h3 class="text-xl sm:text-3xl font-bold mb-2">Una meta de 4 años para tu futuro</h3>
+              <p class="text-slate-200 text-xs sm:text-sm max-w-lg hidden sm:block">Graduarte de Seminario expande tu preparación académica y te habilita para oportunidades eclesiásticas, becas y educación superior.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Botones de navegación (Izquierda y Derecha) -->
+        <button 
+          id="prev-btn" 
+          class="absolute left-4 top-1/2 -translate-y-1/2 bg-slate-900/40 hover:bg-slate-900/80 text-white w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 outline-none backdrop-blur-sm"
+          aria-label="Imagen Anterior"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+          </svg>
+        </button>
+
+        <button 
+          id="next-btn" 
+          class="absolute right-4 top-1/2 -translate-y-1/2 bg-slate-900/40 hover:bg-slate-900/80 text-white w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 outline-none backdrop-blur-sm"
+          aria-label="Siguiente Imagen"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+          </svg>
+        </button>
+
+        <!-- Indicadores (Puntos en el inferior) -->
+        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2.5 z-20 bg-slate-950/20 px-3 py-1.5 rounded-full backdrop-blur-sm">
+          <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-white transition-all duration-300" onclick="irASlide(0)" aria-label="Slide 1"></button>
+          <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white/80 transition-all duration-300" onclick="irASlide(1)" aria-label="Slide 2"></button>
+          <button class="carousel-dot w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white/80 transition-all duration-300" onclick="irASlide(2)" aria-label="Slide 3"></button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 
+    ========================================================================
+    COMPONENTE: BENEFICIOS CLAVE
+    ========================================================================
+  -->
+  <section id="beneficios" class="py-16 px-4 max-w-7xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-extrabold text-brandBlue tracking-tight mb-3">¿Qué obtienes de Seminario?</h2>
+      <p class="text-slate-600 max-w-xl mx-auto">Mucho más que una lección, una base firme para el resto de tu vida adulta y profesional.</p>
+    </div>
+
+    <!-- Grid de Tres Columnas de Beneficios -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- Beneficio 1 -->
+      <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-md hover:shadow-xl transition-all-300">
+        <div class="w-12 h-12 bg-blue-100 text-brandBlue rounded-xl flex items-center justify-center mb-5">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-brandBlue mb-2">Dominio de las Escrituras</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">
+          Encuentra respuestas a preguntas profundas y aprende a usar principios eternos para tomar decisiones críticas del día a día de forma segura.
+        </p>
+      </div>
+
+      <!-- Beneficio 2 -->
+      <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-md hover:shadow-xl transition-all-300">
+        <div class="w-12 h-12 bg-amber-100 text-brandGold rounded-xl flex items-center justify-center mb-5">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-brandBlue mb-2">Comunidad Segura</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">
+          Construye relaciones saludables con jóvenes de tu edad que comparten tu fe y tus principios espirituales en un espacio sin juzgar.
+        </p>
+      </div>
+
+      <!-- Beneficio 3 -->
+      <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-md hover:shadow-xl transition-all-300">
+        <div class="w-12 h-12 bg-emerald-100 text-emerald-700 rounded-xl flex items-center justify-center mb-5">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-brandBlue mb-2">Desarrollo Personal</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">
+          Gana disciplina, habilidades para hablar en público, análisis crítico y la habilidad para guiar y enseñar a otros en cualquier entorno.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 
+    ========================================================================
+    COMPONENTE: FORMULARIO DE PREINSCRIPCIÓN
+    ========================================================================
+  -->
+  <section id="inscripcion" class="py-16 px-4 bg-slate-100 border-t border-b border-slate-200">
+    <div class="max-w-3xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200">
+      
+      <!-- Encabezado de la Tarjeta del Formulario -->
+      <div class="bg-brandBlue text-white p-8 text-center">
+        <h2 class="text-2xl sm:text-3xl font-extrabold mb-2">Formulario de Inscripción</h2>
+        <p class="text-blue-200 text-sm">Completa tus datos para iniciar tu proceso en Seminario. Un líder o maestro de tu estaca se contactará contigo.</p>
+      </div>
+
+      <!-- Formulario Real -->
+      <form id="form-seminario" class="p-8 space-y-6">
+        
+        <!-- Sección 1: Datos del Estudiante -->
+        <div>
+          <h3 class="text-lg font-bold text-brandBlue border-b border-slate-100 pb-2 mb-4">Datos del Estudiante</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="nombre-estudiante" class="block text-xs font-semibold text-slate-600 uppercase mb-1">Nombre Completo *</label>
+              <input 
+                type="text" 
+                id="nombre-estudiante" 
+                required 
+                placeholder="Ej. Juan Pérez"
+                class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brandBlue focus:border-brandBlue outline-none text-sm transition-all"
+              >
+            </div>
+            <div>
+              <label for="edad-estudiante" class="block text-xs font-semibold text-slate-600 uppercase mb-1">Edad (14 a 17) *</label>
+              <select 
+                id="edad-estudiante" 
+                required 
+                class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brandBlue focus:border-brandBlue outline-none text-sm bg-white transition-all"
+              >
+                <option value="">Selecciona tu edad</option>
+                <option value="14">14 años</option>
+                <option value="15">15 años</option>
+                <option value="16">16 años</option>
+                <option value="17">17 años</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sección 2: Datos de Contacto y Padres -->
+        <div>
+          <h3 class="text-lg font-bold text-brandBlue border-b border-slate-100 pb-2 mb-4">Datos de los Padres / Tutor</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="nombre-padre" class="block text-xs font-semibold text-slate-600 uppercase mb-1">Nombre de la Madre, Padre o Tutor *</label>
+              <input 
+                type="text" 
+                id="nombre-padre" 
+                required 
+                placeholder="Ej. María Gómez"
+                class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brandBlue focus:border-brandBlue outline-none text-sm transition-all"
+              >
+            </div>
+            <div>
+              <label for="telefono-contacto" class="block text-xs font-semibold text-slate-600 uppercase mb-1">Teléfono de Contacto (WhatsApp) *</label>
+              <input 
+                type="tel" 
+                id="telefono-contacto" 
+                required 
+                placeholder="+54 9 11 1234-5678"
+                class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brandBlue focus:border-brandBlue outline-none text-sm transition-all"
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Sección 3: Ubicación y Preferencia Eclesiástica -->
+        <div>
+          <h3 class="text-lg font-bold text-brandBlue border-b border-slate-100 pb-2 mb-4">Ubicación y Preferencias</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="estaca-barrio" class="block text-xs font-semibold text-slate-600 uppercase mb-1">Estaca y Barrio (si aplica)</label>
+              <input 
+                type="text" 
+                id="estaca-barrio" 
+                placeholder="Ej. Estaca Mendoza, Barrio Central"
+                class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brandBlue focus:border-brandBlue outline-none text-sm transition-all"
+              >
+            </div>
+            <div>
+              <label for="modalidad" class="block text-xs font-semibold text-slate-600 uppercase mb-1">Preferencia de Horario / Clase *</label>
+              <select 
+                id="modalidad" 
+                required 
+                class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brandBlue focus:border-brandBlue outline-none text-sm bg-white transition-all"
+              >
+                <option value="">Selecciona una modalidad</option>
+                <option value="presencial-manana">Presencial - Mañana (Antes de la escuela)</option>
+                <option value="presencial-tarde">Presencial - Tarde/Noche</option>
+                <option value="online">Online / Virtual</option>
+                <option value="indefinido">Consultar opciones disponibles</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botón de Envío -->
+        <div class="pt-4">
+          <button 
+            type="submit" 
+            class="w-full bg-brandBlue hover:bg-brandBlue-dark text-white font-bold py-4 rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5 text-center flex items-center justify-center gap-2"
+          >
+            <span>Enviar preinscripción</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+
+      </form>
+
+      <!-- Mensaje dinámico de Éxito al Enviar Formulario (Oculto por defecto) -->
+      <div id="mensaje-exito" class="hidden p-8 text-center bg-slate-50 border-t border-slate-200 animate-fade-in-up">
+        <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold text-emerald-800 mb-2">¡Inscripción Recibida!</h3>
+        <p class="text-slate-600 text-sm max-w-md mx-auto mb-6">
+          Gracias, <span id="confirmar-nombre" class="font-bold text-slate-800"></span>. Se ha guardado tu solicitud para ingresar a Seminario en la modalidad de <strong id="confirmar-modalidad" class="text-brandBlue"></strong>.
+        </p>
+        <div class="bg-blue-50 border border-blue-200 rounded-2xl p-4 text-left max-w-md mx-auto text-xs text-brandBlue-dark space-y-2 mb-6">
+          <p class="font-bold">Siguientes Pasos:</p>
+          <p>1. Nos contactaremos con el tutor <strong id="confirmar-tutor"></strong> al teléfono de contacto suministrado.</p>
+          <p>2. Coordinaremos los materiales de lectura y te daremos acceso al grupo de tu clase local.</p>
+        </div>
+        <button 
+          onclick="reiniciarFormulario()"
+          class="text-xs text-slate-500 underline hover:text-brandBlue font-semibold transition-colors"
+        >
+          Inscribir a otro estudiante
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 
+    ========================================================================
+    COMPONENTE: FOOTER (PIE DE PÁGINA)
+    ========================================================================
+  -->
+  <footer class="bg-slate-900 text-slate-400 py-10 border-t border-slate-800 text-xs text-center">
+    <div class="max-w-7xl mx-auto px-4 space-y-4">
+      <div class="flex justify-center space-x-6 text-sm font-semibold mb-2">
+        <a href="index.html" class="hover:text-amber-300 transition-colors">Volver al Inicio General</a>
+        <span class="text-slate-700">|</span>
+        <a href="#inscripcion" class="hover:text-amber-300 transition-colors">Inscripción</a>
+      </div>
+      <p class="font-medium text-slate-300">
+        Seminarios e Institutos de Religión - Área Sudamérica Sur
+      </p>
+      <p class="max-w-xl mx-auto leading-relaxed">
+        © 2026. Todos los derechos reservados. Este sitio está diseñado como una herramienta de preinscripción local y no constituye una comunicación oficial de La Iglesia de Jesucristo de los Santos de los Últimos Días.
+      </p>
+    </div>
+  </footer>
+
+  <!-- 
+    ========================================================================
+    COMPONENTE: FUNCIONALIDAD INTERACTIVA (JAVASCRIPT) - 'seminario.js'
+    Si decides separar este archivo en seminario.js, copia todo el contenido
+    dentro de estas etiquetas de script y enlázalo en tu HTML con:
+    <script src="seminario.js"></script>
+    ========================================================================
+  -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      
+      // === SELECCIÓN DE ELEMENTOS (MENÚ HAMBURGUESA) ===
+      const menuBtn = document.getElementById("menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const menuOverlay = document.getElementById("menu-overlay");
+      const mobileLinks = document.querySelectorAll(".mobile-link");
+
+      // === SELECCIÓN DE ELEMENTOS (CARRUSEL) ===
+      const slides = document.querySelectorAll(".carousel-slide");
+      const dots = document.querySelectorAll(".carousel-dot");
+      const prevBtn = document.getElementById("prev-btn");
+      const nextBtn = document.getElementById("next-btn");
+      let currentSlideIndex = 0;
+      let autoSlideInterval;
+
+      // === SELECCIÓN DE ELEMENTOS (FORMULARIO) ===
+      const formSeminario = document.getElementById("form-seminario");
+      const mensajeExito = document.getElementById("mensaje-exito");
+      const confirmarNombre = document.getElementById("confirmar-nombre");
+      const confirmarModalidad = document.getElementById("confirmar-modalidad");
+      const confirmarTutor = document.getElementById("confirmar-tutor");
+
+      // === LÓGICA DEL MENÚ LATERAL (OFF-CANVAS) ===
+      function openMenu() {
+        menuBtn.classList.add("active");
+        mobileMenu.classList.remove("translate-x-full");
+        menuOverlay.classList.remove("hidden");
+        setTimeout(() => {
+          menuOverlay.classList.add("opacity-100");
+        }, 10);
+      }
+
+      function closeMenu() {
+        menuBtn.classList.remove("active");
+        mobileMenu.classList.add("translate-x-full");
+        menuOverlay.classList.remove("opacity-100");
+        setTimeout(() => {
+          menuOverlay.classList.add("hidden");
+        }, 300);
+      }
+
+      menuBtn.addEventListener("click", function() {
+        const isOpen = menuBtn.classList.contains("active");
+        if (isOpen) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      });
+
+      menuOverlay.addEventListener("click", closeMenu);
+
+      mobileLinks.forEach(link => {
+        link.addEventListener("click", closeMenu);
+      });
+
+      // === LÓGICA DEL CARRUSEL DE IMÁGENES ===
+      function updateCarousel(index) {
+        // Desactiva todas las slides
+        slides.forEach((slide, i) => {
+          slide.classList.add("opacity-0", "pointer-events-none");
+          slide.classList.remove("opacity-100");
+          dots[i].classList.remove("bg-white");
+          dots[i].classList.add("bg-white/40");
+        });
+
+        // Activa la diapositiva solicitada
+        slides[index].classList.remove("opacity-0", "pointer-events-none");
+        slides[index].classList.add("opacity-100");
+        dots[index].classList.remove("bg-white/40");
+        dots[index].classList.add("bg-white");
+        currentSlideIndex = index;
+      }
+
+      function nextSlide() {
+        let index = currentSlideIndex + 1;
+        if (index >= slides.length) index = 0;
+        updateCarousel(index);
+      }
+
+      function prevSlide() {
+        let index = currentSlideIndex - 1;
+        if (index < 0) index = slides.length - 1;
+        updateCarousel(index);
+      }
+
+      // Reinicia el temporizador de auto-avance para evitar cambios abruptos al interactuar
+      function resetAutoSlide() {
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = setInterval(nextSlide, 5000); // Avanza cada 5 segundos
+      }
+
+      // Asignar funciones a los botones
+      nextBtn.addEventListener("click", () => {
+        nextSlide();
+        resetAutoSlide();
+      });
+
+      prevBtn.addEventListener("click", () => {
+        prevSlide();
+        resetAutoSlide();
+      });
+
+      // Permitir la navegación con las flechas del teclado
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") {
+          nextSlide();
+          resetAutoSlide();
+        } else if (e.key === "ArrowLeft") {
+          prevSlide();
+          resetAutoSlide();
+        }
+      });
+
+      // Hacer que los puntos indicadores cambien la slide
+      window.irASlide = function(index) {
+        updateCarousel(index);
+        resetAutoSlide();
+      }
+
+      // Inicializa el Carrusel automático
+      resetAutoSlide();
+
+      // === SOPORTE TÁCTIL (DESLIZAMIENTO CON EL DEDO EN EL CARRUSEL) ===
+      let touchStartX = 0;
+      let touchEndX = 0;
+      const carouselContainer = document.getElementById("carousel-slides");
+
+      carouselContainer.addEventListener("touchstart", (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      carouselContainer.addEventListener("touchend", (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleGesture();
+      }, { passive: true });
+
+      function handleGesture() {
+        if (touchStartX - touchEndX > 50) {
+          nextSlide(); // Deslizamiento hacia la izquierda -> siguiente
+          resetAutoSlide();
+        } else if (touchEndX - touchStartX > 50) {
+          prevSlide(); // Deslizamiento hacia la derecha -> anterior
+          resetAutoSlide();
+        }
+      }
+
+      // === LÓGICA DE ENVÍO DE FORMULARIO ===
+      formSeminario.addEventListener("submit", function(event) {
+        // Detener la recarga nativa de la página
+        event.preventDefault();
+
+        // 1. Obtención de los valores del formulario
+        const nombreEst = document.getElementById("nombre-estudiante").value.trim();
+        const edadEst = document.getElementById("edad-estudiante").value;
+        const nombrePadre = document.getElementById("nombre-padre").value.trim();
+        const telefono = document.getElementById("telefono-contacto").value.trim();
+        const modalitySelect = document.getElementById("modalidad");
+        const modalidadTexto = modalitySelect.options[modalitySelect.selectedIndex].text;
+
+        // 2. Validación básica de seguridad
+        if (!nombreEst || !edadEst || !nombrePadre || !telefono || !modalitySelect.value) {
+          return; // Detiene el flujo si hay campos obligatorios vacíos
+        }
+
+        // 3. Simulación de procesamiento de datos y visualización del mensaje
+        confirmarNombre.textContent = nombreEst;
+        confirmarModalidad.textContent = modalidadTexto;
+        confirmarTutor.textContent = nombrePadre;
+
+        // Transición de ocultar formulario y mostrar éxito
+        formSeminario.classList.add("hidden");
+        mensajeExito.classList.remove("hidden");
+
+        // Desplazamiento fluido hacia el mensaje para mejor usabilidad móvil
+        mensajeExito.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    });
+
+    // === REINICIAR FORMULARIO (Multiinscripción) ===
+    function reiniciarFormulario() {
+      const formSeminario = document.getElementById("form-seminario");
+      const mensajeExito = document.getElementById("mensaje-exito");
+      
+      formSeminario.reset();
+      mensajeExito.classList.add("hidden");
+      formSeminario.classList.remove("hidden");
+      formSeminario.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  </script>
+</body>
+</html>

@@ -155,3 +155,8 @@ function irAPagina(destino) {
     videoContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }
+
+
+function gotopage(pagina) {
+ window.location.href = pagina;
+}
