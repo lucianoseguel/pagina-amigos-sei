@@ -221,6 +221,100 @@
       </button>
 
     </div>
+    <div id="video-container" class="hidden w-full max-w-2xl bg-white rounded-2xl border border-slate-200 shadow-xl p-4 sm:p-6 mt-8 transition-all duration-300 animate-fade-in-up mx-auto">
+      <div class="text-center mb-4">
+        <h3 id="video-title" class="text-lg sm:text-xl font-bold text-brandBlue">¡Descubre más sobre este programa!</h3>
+      </div>
+      <div class="relative w-full pb-[56.25%] h-0 rounded-xl overflow-hidden shadow-md bg-black">
+        <div id="video-container" class="hidden w-full max-w-2xl bg-white rounded-2xl border border-slate-200 shadow-xl p-4 sm:p-6 mt-8 transition-all duration-300 animate-fade-in-up mx-auto">
+  <div class="text-center mb-4">
+    <h3 id="video-title" class="text-lg sm:text-xl font-bold text-brandBlue">¡Descubre más sobre este programa!</h3>
+  </div>
+  <div class="relative w-full pb-[56.25%] h-0 rounded-xl overflow-hidden shadow-md bg-black">
+    <!-- Usamos iframe, que sí sabe leer reproductores externos -->
+    <iframe 
+      id="video-player"
+      class="absolute top-0 left-0 w-full h-full" 
+      src="" 
+      title="Invitación Especial"
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+      </div>
+    </div>
+    <!-- 
+      ========================================================================
+      COMPONENTE: FORMULARIO DE CONTACTO E INSCRIPCIÓN
+      ========================================================================
+    -->
+    <section id="contacto" class="hidden w-full max-w-2xl bg-white rounded-2xl border border-slate-200 shadow-xl p-6 sm:p-8 mt-12 transition-all duration-300">
+      <div class="text-center mb-6">
+        <h3 class="text-xl sm:text-2xl font-bold text-brandBlue mb-2">¿Tienes dudas o quieres inscribirte?</h3>
+        <p class="text-xs sm:text-sm text-slate-500">Completa tus datos y un coordinador de tu estaca/distrito se pondrá en contacto contigo.</p>
+      </div>
+
+      <!-- Reemplaza "TU_ACCESS_KEY" o "TU_ID_FORMSPREE" según el servicio que elijas abajo -->
+      <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
+        
+        <!-- Token de Web3Forms (Ejemplo rápido y gratuito) -->
+        <input type="hidden" name="access_key" value="TU_ACCESS_KEY_AQUÍ">
+        
+        <!-- Nombre y Apellido -->
+        <div>
+          <label for="nombre" class="block text-xs font-bold text-brandBlue uppercase tracking-wider mb-1">Nombre Completo</label>
+          <input type="text" id="nombre" name="nombre" required 
+            class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brandBlue/20 focus:border-brandBlue outline-none transition-all text-sm bg-slate-50/50"
+            placeholder="Ej. Juan Pérez">
+        </div>
+
+        <!-- Grid de Correo y Teléfono -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="email" class="block text-xs font-bold text-brandBlue uppercase tracking-wider mb-1">Correo Electrónico</label>
+            <input type="email" id="email" name="email" required 
+              class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brandBlue/20 focus:border-brandBlue outline-none transition-all text-sm bg-slate-50/50"
+              placeholder="juan@ejemplo.com">
+          </div>
+          <div>
+            <label for="telefono" class="block text-xs font-bold text-brandBlue uppercase tracking-wider mb-1">Teléfono / WhatsApp</label>
+            <input type="tel" id="telefono" name="telefono" required 
+              class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brandBlue/20 focus:border-brandBlue outline-none transition-all text-sm bg-slate-50/50"
+              placeholder="Ej. +54 9 11 1234-5678">
+          </div>
+        </div>
+
+        <!-- Programa de Interés -->
+        <div>
+          <label for="programa" class="block text-xs font-bold text-brandBlue uppercase tracking-wider mb-1">Programa de Interés</label>
+          <select id="programa" name="programa" required 
+            class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brandBlue/20 focus:border-brandBlue outline-none transition-all text-sm bg-slate-50/50 text-slate-700">
+            <option value="" disabled selected>Selecciona una opción...</option>
+            <option value="Instituto (18-35 años)">Instituto (18 a 35 años)</option>
+            <option value="Solo Consultas">Solo consultas / Información general</option>
+          </select>
+        </div>
+
+        <!-- Mensaje adicional -->
+        <div>
+          <label for="mensaje" class="block text-xs font-bold text-brandBlue uppercase tracking-wider mb-1">Mensaje o Estaca/Barrio (Opcional)</label>
+          <textarea id="mensaje" name="mensaje" rows="3" 
+            class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brandBlue/20 focus:border-brandBlue outline-none transition-all text-sm bg-slate-50/50 resize-none"
+            placeholder="Cuéntanos de qué barrio/estaca eres o déjanos tu consulta..."></textarea>
+        </div>
+
+        <!-- Botón de Envío -->
+        <button type="submit" id="submit-btn"
+          class="w-full bg-brandBlue hover:bg-brandBlue-light text-white font-bold py-3 px-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 text-sm mt-2">
+          <span>Enviar Información</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 19l7-7m0 0l-7-7m7 7H3"/>
+          </svg>
+        </button>
+      </form>
+    </section>
 
     <!-- Mensaje de Feedback / Modal de estado (Evita usar alert() de navegador) -->
     <div id="status-message" class="hidden w-full max-w-md p-4 rounded-xl bg-slate-100 border border-slate-300 text-center text-sm text-slate-700 animate-pulse">
