@@ -97,26 +97,31 @@ function irAPagina(destino) {
   const statusMessage = document.getElementById("status-message");
   const contactoSection = document.getElementById("contacto");
   const videoContainer = document.getElementById("video-container");
-  const videoPlayer = document.getElementById("video-player");
+  const videoLink = document.getElementById("video-link");
   const videoTitle = document.getElementById("video-title");
+  
+  // Variables simplificadas de la tarjeta del mapa
+  const mapContainer = document.getElementById("map-container");
+  const mapLink = document.getElementById("map-link");
 
-  // === CONFIGURACIÓN DE REPRODUCTOR OFICIAL DE LA IGLESIA (BRIGHTCOVE - CERO ANUNCIOS) ===
-  // Estos enlaces son los reproductores limpios incrustados oficiales de la Iglesia.
-  const videoSeminario = "https://players.brightcove.net/1241706627001/default_default/index.html?videoId=6016140540001"; 
-  const videoInstituto = "https://players.brightcove.net/1241706627001/default_default/index.html?videoId=6271926685001"; 
-
-  // Limpiar el reproductor para evitar parpadeos o pantallas congeladas
-  if (videoPlayer) videoPlayer.src = "";
+  // Direcciones oficiales institucionales
+  const urlVideoSeminario = "https://www.churchofjesuschrist.org/si/seminary/personal-invitation-to-seminary?lang=spa";
+  const urlVideoInstituto = "https://www.churchofjesuschrist.org/study/video/mormon-messages-for-youth/2026-02-president-oaks-institute-invitation-video?lang=spa";
+  const urlMapaInstituto = "https://myinstitute.churchofjesuschrist.org/findClasses?lo=Utilizar+mi+ubicaci%C3%B3n";
 
   if (destino === 'seminario') {
+    // 1. Ocultamos la tarjeta del mapa y formulario de Instituto
     if (contactoSection) contactoSection.classList.add("hidden");
+    if (mapContainer) mapContainer.classList.add("hidden");
     
-    if (videoContainer && videoPlayer && videoTitle) {
+    // 2. Configuramos la tarjeta de video de Seminario
+    if (videoContainer && videoLink && videoTitle) {
       videoTitle.innerHTML = "🎬 Invitación Personal a Seminario";
-      videoPlayer.src = videoSeminario;
+      videoLink.href = urlVideoSeminario;
       videoContainer.classList.remove("hidden");
     }
 
+    // 3. Mostramos el mensaje informativo azul de Seminario
     statusMessage.className = "w-full max-w-md p-4 rounded-xl bg-blue-50 border border-blue-200 text-center text-sm text-blue-800 animate-fade-in-up mt-4 mx-auto";
     statusMessage.innerHTML = "✨ Has seleccionado <strong>Seminario (14 a 17 años)</strong>. Pronto diseñaremos esta sección con materiales, horarios y registro para las clases diarias.";
     statusMessage.classList.remove("hidden");
@@ -125,18 +130,28 @@ function irAPagina(destino) {
   } 
   
   else if (destino === 'instituto') {
+    // 1. Limpiamos el mensaje de Seminario
     statusMessage.classList.add("hidden");
     
-    if (videoContainer && videoPlayer && videoTitle) {
-      videoTitle.innerHTML = "🎬 Invitación Especial a Instituto";
-      videoPlayer.src = videoInstituto;
+    // 2. Configuramos la tarjeta de video de Instituto
+    if (videoContainer && videoLink && videoTitle) {
+      videoTitle.innerHTML = "🎬 Mensaje Especial del Presidente Oaks sobre Instituto";
+      videoLink.href = urlVideoInstituto;
       videoContainer.classList.remove("hidden");
     }
 
+    // 3. Mostramos la tarjeta de acceso al Mapa
+    if (mapContainer && mapLink) {
+      mapLink.href = urlMapaInstituto; // Inyecta el link directo
+      mapContainer.classList.remove("hidden");
+    }
+
+    // 4. Mostramos el formulario de contacto al final de todo
     if (contactoSection) {
       contactoSection.classList.remove("hidden");
     }
 
+    // 5. Desplazamos la pantalla suavemente hacia los recursos que acaban de aparecer
     videoContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }
