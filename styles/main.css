@@ -1,4 +1,9 @@
-    /* Estilos y animación para el menú Hamburguesa */
+
+*{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Estilos y animación para el menú Hamburguesa */
     .burger-line {
       transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out;
     }
