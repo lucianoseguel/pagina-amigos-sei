@@ -3,6 +3,13 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+:root{
+  ---primary-color--: #BED21E;
+  --secondary-color--: #005175;
+  --backgound2--: #6DB344;
+}
+
+
 /* Estilos y animación para el menú Hamburguesa */
     .burger-line {
       transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out;
@@ -34,3 +41,21 @@
     .animate-fade-in-up {
       animation: fadeInUp 0.6s ease-out forwards;
     }
+
+    
+
+.primary-font{
+  color: var(---primary-color--) !important;
+}
+
+.secondary-font{
+  color: var(--secondary-color--) !important;
+}
+
+.official-background-1{
+  background-color: var(--secondary-color--) !important;
+}
+
+.official-background-2{
+  background-color: var(--backgound2--) !important;
+}
