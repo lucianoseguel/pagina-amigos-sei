@@ -69,7 +69,9 @@ html,body{
   padding-top: 6rem;
   display: flex;
   flex-direction: column;
-  background-image: url(../images/jesucristo-hero.jpg);
+  background-image: url(../images/jesucristo-hero.png);
+  background-size: cover;
+  
   width: 100vw;
   overflow: hidden;
   margin-bottom: 2rem;
