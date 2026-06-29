@@ -109,8 +109,8 @@
       <!-- Navegación de Escritorio -->
        <nav class="hidden md:flex space-x-8 text-sm font-medium">
         <a href="/" class="hover:text-amber-300 transition-colors border-b-2 border-transparent hover:border-amber-400 pb-1">Inicio</a>
-        <a href="#seminario" class="hover:text-amber-300 transition-colors border-b-2 border-transparent hover:border-amber-400 pb-1">Seminarios</a>
-        <a href="#instituto" class="hover:text-amber-300 transition-colors border-b-2 border-amber-400 pb-1">Institutos</a>
+        <a href="#seminario" class="hover:text-amber-300 transition-colors border-b-2 border-amber-400 pb-1">Seminarios</a>
+        <a href="#instituto" class="hover:text-amber-300 transition-colors border-b-2 border-transparent hover:border-amber-400 pb-1">Institutos</a>
         <a href="#" class="hover:text-amber-300 transition-colors border-b-2 border-transparent hover:border-amber-400 pb-1">Recursos</a>
         <a href="#" class="hover:text-amber-300 transition-colors border-b-2 border-transparent hover:border-amber-400 pb-1">Contacto</a>
       </nav>
@@ -329,7 +329,7 @@
   -->
   <section id="beneficios" class="py-16 px-4 max-w-7xl mx-auto">
     <div class="text-center mb-12">
-      <h2 class="text-3xl font-extrabold text-brandBlue tracking-tight mb-3 secondary-font">¿Qué obtienes de Seminario?</h2>
+      <h2 class="text-3xl font-extrabold text-brandBlue tracking-tight mb-3 secondary-font">¿Qué obtienes de Instituto?</h2>
       <p class="text-slate-600 max-w-xl mx-auto">Mucho más que una lección, una base firme para el resto de tu vida adulta y profesional.</p>
     </div>
 
@@ -445,7 +445,7 @@
 
         <!-- Sección 3: Ubicación y Preferencia Eclesiástica -->
         <div>
-          <h3 class="text-lg font-bold text-brandBlue border-b border-slate-100 pb-2 mb-4">Ubicación y Preferencias</h3>
+          <h3 class="text-lg font-bold text-brandBlue border-b border-slate-100 pb-2 mb-4">Ubicación y Contacto</h3>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label for="estaca-barrio" class="block text-xs font-semibold text-slate-600 uppercase mb-1">Estaca y Barrio (si aplica)</label>
@@ -457,18 +457,14 @@
               >
             </div>
             <div>
-              <label for="modalidad" class="block text-xs font-semibold text-slate-600 uppercase mb-1">Preferencia de Horario / Clase *</label>
-              <select 
-                id="modalidad" 
+              <label for="contacto" class="block text-xs font-semibold text-slate-600 uppercase mb-1">Información de Contacto *</label>
+              <input 
+                type="text" 
+                id="contacto" 
                 required 
-                class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brandBlue focus:border-brandBlue outline-none text-sm bg-white transition-all"
+                placeholder="Ej. +54 9 11 1234-5678 o correo@ejemplo.com"
+                class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brandBlue focus:border-brandBlue outline-none text-sm transition-all"
               >
-                <option value="">Selecciona una modalidad</option>
-                <option value="presencial-manana">Presencial - Mañana (Antes de la escuela)</option>
-                <option value="presencial-tarde">Presencial - Tarde/Noche</option>
-                <option value="online">Online / Virtual</option>
-                <option value="indefinido">Consultar opciones disponibles</option>
-              </select>
             </div>
           </div>
         </div>
