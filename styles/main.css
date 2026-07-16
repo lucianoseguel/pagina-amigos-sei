@@ -9,6 +9,10 @@
   --backgound2--: #6DB344;
 }
 
+html,body{
+  overflow-x: hidden;
+}
+
 
 /* Estilos y animación para el menú Hamburguesa */
     .burger-line {
@@ -58,4 +62,21 @@
 
 .official-background-2{
   background-color: var(--backgound2--) !important;
+}
+
+
+.hero-container{
+  padding-top: 6rem;
+  display: flex;
+  flex-direction: column;
+  background-image: url(../images/jesucristo-hero.png);
+  background-size: cover;
+  
+  width: 100vw;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.hero-container:nth-child(all){
+  margin: auto;
 }
