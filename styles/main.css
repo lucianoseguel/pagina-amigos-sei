@@ -80,3 +80,12 @@ html,body{
 .hero-container:nth-child(all){
   margin: auto;
 }
+
+/* estilo de las imagaens dentro de los contendores de programas en index */
+.ico-programa{
+  color: rgb(167, 167, 167);
+}
+
+.ico-programa:hover{
+  color: red;
+}
