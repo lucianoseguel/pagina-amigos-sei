@@ -181,3 +181,23 @@ document.addEventListener("DOMContentLoaded", function() {
         formInstituto.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
     }
+
+    /** @type {import('tailwindcss').Config} */
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        brandBlue: {
+          DEFAULT: '#0F1E36', // El azul oscuro señorial para fondos y títulos
+          light: '#1E3A66',   // Una variante un poco más clara para hovers
+        },
+        brandGold: {
+          DEFAULT: '#F59E0B', // El tono ámbar/dorado que hace un contraste hermoso
+          dark: '#D97706',    // Para el efecto hover de los botones
+        },
+        brandSky: '#38BDF8',  // Azul claro para detalles y textos secundarios
+      },
+    },
+  },
+  plugins: [],
+}

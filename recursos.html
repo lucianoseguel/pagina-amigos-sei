@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recursos y Manuales - Instituto y Seminario</title>
+  
+  <!-- CDN de Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/seminario.css">
+  
+  <!-- Configuración de colores institucionales en Tailwind -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandBlue: {
+              light: '#1e40af',
+              DEFAULT: '#0b2f64',
+              dark: '#031b3d',
+            },
+            brandGold: {
+              light: '#80FF51',
+              DEFAULT: '#5FAE1A',
+              dark: '3D8400',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Estilos de transición para el botón Hamburguesa */
+    .burger-line {
+      transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out;
+    }
+    
+    /* Animación del menú Hamburguesa a X */
+    .active .line-1 {
+      transform: translateY(6px) rotate(45deg);
+    }
+    .active .line-2 {
+      opacity: 0;
+    }
+    .active .line-3 {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    /* Animación de entrada de elementos */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in-up {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col justify-between">
+
+  <!-- 
+    ========================================================================
+    COMPONENTE: NAVBAR (BARRA DE NAVEGACIÓN RESPONSIVA)
+    ========================================================================
+  -->
+  <header class="bg-brandBlue text-white sticky top-0 z-50 shadow-md official-background-1">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <!-- Identidad / Logo -->
+      <a href="index.html" class="flex flex-col justify-center select-none group">
+        <span class="font-bold text-sm sm:text-base md:text-lg tracking-wide group-hover:text-amber-300 transition-colors">
+          Instituto
+        </span>
+        <span class="text-[10px] sm:text-[11px] text-slate-300 tracking-wider">
+          Área Sudamérica Sur
+        </span>
+      </a>
+
+      <!-- Navegación de Escritorio -->
+      <nav class="hidden md:flex space-x-8 text-sm font-medium">
+        <a href="index.html" class="hover:text-amber-300 transition-colors border-b-2 border-transparent hover:border-amber-400 pb-1">Inicio</a>
+        <a href="seminario.html" class="hover:text-amber-300 transition-colors border-b-2 border-transparent hover:border-amber-400 pb-1">Seminarios</a>
+        <a href="instituto.html" class="hover:text-amber-300 transition-colors border-b-2 border-transparent hover:border-amber-400 pb-1">Institutos</a>
+        <a href="recursos.html" class="text-amber-300 border-b-2 border-amber-400 pb-1">Recursos</a>
+        <a href="contacto.html" class="hover:text-amber-300 transition-colors border-b-2 border-transparent hover:border-amber-400 pb-1">Contacto</a>
+      </nav>
+
+      <!-- Menú Hamburguesa para Móviles -->
+      <button 
+        id="menu-btn" 
+        class="md:hidden flex flex-col justify-between w-6 h-4 focus:outline-none z-50"
+        aria-label="Abrir menú móvil"
+      >
+        <span class="burger-line line-1 w-full h-0.5 bg-white rounded"></span>
+        <span class="burger-line line-2 w-full h-0.5 bg-white rounded"></span>
+        <span class="burger-line line-3 w-full h-0.5 bg-white rounded"></span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- 
+    ========================================================================
+    COMPONENTE: MENÚ LATERAL OFF-CANVAS (MOBILE)
+    ========================================================================
+  -->
+  <div 
+    id="menu-overlay" 
+    class="fixed inset-0 bg-slate-900/60 z-40 hidden backdrop-blur-sm transition-opacity duration-300 opacity-0"
+  ></div>
+
+  <aside 
+    id="mobile-menu" 
+    class="fixed top-0 right-0 h-full w-72 bg-brandBlue text-white shadow-2xl z-40 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between p-6 pt-24"
+  >
+    <nav class="flex flex-col space-y-6 text-lg font-semibold">
+      <a href="index.html" class="mobile-link hover:text-amber-300 transition-colors flex items-center gap-3">
+        <span>Inicio</span>
+      </a>
+      <a href="seminario.html" class="mobile-link hover:text-amber-300 transition-colors flex items-center gap-3">
+        <span>Seminarios (14-17)</span>
+      </a>
+      <a href="instituto.html" class="mobile-link hover:text-amber-300 transition-colors flex items-center gap-3">
+        <span>Institutos (18-35)</span>
+      </a>
+      <a href="recursos.html" class="mobile-link text-amber-300 flex items-center gap-3">
+        <span>Recursos Útiles</span>
+      </a>
+      <a href="contacto.html" class="mobile-link hover:text-amber-300 transition-colors flex items-center gap-3">
+        <span>Contacto</span>
+      </a>
+    </nav>
+    <div class="border-t border-slate-700 pt-6 text-xs text-slate-400">
+      <p class="font-semibold text-white">Seminarios e Institutos de Religión</p>
+      <p class="mt-1">Área Sudamérica Sur</p>
+    </div>
+  </aside>
+
+  <!-- 
+    ========================================================================
+    COMPONENTE: HERO SECTION (ENCABEZADO CON IMAGEN DE FONDO)
+    ========================================================================
+  -->
+  <section class="relative bg-brandBlue text-white py-20 sm:py-28 px-4 overflow-hidden bg-cover bg-center" style="background-image: url('images/estudio.jpg');">
+    
+    <!-- Capa de superposición para oscurecer el fondo y garantizar contraste y legibilidad -->
+    <div class="absolute inset-0 bg-slate-900/75 z-0"></div>
+
+    <div class="relative max-w-5xl mx-auto text-center z-10 animate-fade-in-up">
+      <span class="bg-brandGold/20 text-amber-300 px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold tracking-wider uppercase border border-brandGold/30">
+        Biblioteca de Estudio
+      </span>
+      
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mt-6 mb-6 leading-tight">
+        Manuales y <br class="hidden sm:inline">
+        <span class="text-amber-400">Recursos Oficiales</span>
+      </h1>
+      
+      <p class="text-lg sm:text-xl text-slate-200 max-w-2xl mx-auto leading-relaxed">
+        Accede directamente a los materiales oficiales para preparar tus clases, profundizar en las escrituras y fortalecer tu aprendizaje diario.
+      </p>
+    </div>
+  </section>
+
+  <!-- 
+    ========================================================================
+    CONTENIDO PRINCIPAL: BIBLIOTECA DE RECURSOS (TARJETAS)
+    ========================================================================
+  -->
+  <main class="flex-grow py-16 px-4 max-w-6xl mx-auto w-full animate-fade-in-up">
+    
+    <!-- Grid de Tarjetas de Recursos -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+      <!-- Tarjeta: Manuales de Seminario -->
+      <div class="bg-white rounded-3xl border border-slate-200 shadow-md overflow-hidden flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+        <div class="p-8">
+          <div class="w-12 h-12 bg-amber-100 text-brandGold rounded-2xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+            </svg>
+          </div>
+          <span class="text-xs font-bold text-amber-600 uppercase tracking-widest">Edades 14 - 17</span>
+          <h2 class="text-2xl font-bold text-brandBlue mt-1 mb-3">Manuales de Seminario</h2>
+          <p class="text-slate-600 text-sm leading-relaxed mb-6">
+            Encuentra las guías de estudio del curso vigente (Antiguo Testamento, Nuevo Testamento, El Libro de Mormón, o Doctrina y Convenios) diseñadas especialmente para jóvenes de secundaria.
+          </p>
+        </div>
+        
+        <div class="p-8 pt-0">
+          <a 
+            href="https://www.churchofjesuschrist.org/study/books-and-lessons/seminary?lang=spa" 
+            target="_blank" 
+            class="w-full inline-flex justify-center items-center gap-2 bg-slate-100 hover:bg-brandBlue hover:text-white text-brandBlue font-bold py-3 px-4 rounded-xl transition-all duration-300 text-sm text-center"
+          >
+            <span>Ir a la Biblioteca de Seminario</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Tarjeta: Manuales de Instituto -->
+      <div class="bg-white rounded-3xl border border-slate-200 shadow-md overflow-hidden flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+        <div class="p-8">
+          <div class="w-12 h-12 bg-blue-100 text-brandBlue rounded-2xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+            </svg>
+          </div>
+          <span class="text-xs font-bold text-blue-600 uppercase tracking-widest">Edades 18 - 35</span>
+          <h2 class="text-2xl font-bold text-brandBlue mt-1 mb-3">Manuales de Instituto</h2>
+          <p class="text-slate-600 text-sm leading-relaxed mb-6">
+            Explora los materiales de lectura para cursos fundamentales como "Jesucristo y el Evangelio Eterno", "Fundamentos de la Restauración" y "La Familia Eterna", diseñados para Jóvenes Adultos Solteros.
+          </p>
+        </div>
+        
+        <div class="p-8 pt-0">
+          <a 
+            href="https://www.churchofjesuschrist.org/study/books-and-lessons/institute?lang=spa" 
+            target="_blank" 
+            class="w-full inline-flex justify-center items-center gap-2 bg-slate-100 hover:bg-brandBlue hover:text-white text-brandBlue font-bold py-3 px-4 rounded-xl transition-all duration-300 text-sm text-center"
+          >
+            <span>Ir a la Biblioteca de Instituto</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- 
+    ========================================================================
+    COMPONENTE: FOOTER (PIE DE PÁGINA)
+    ========================================================================
+  -->
+  <footer class="bg-slate-900 text-slate-400 py-10 border-t border-slate-800 text-xs text-center">
+    <div class="max-w-7xl mx-auto px-4 space-y-4">
+      <div class="flex justify-center space-x-6 text-sm font-semibold mb-2">
+        <a href="index.html" class="hover:text-amber-300 transition-colors">Volver al Inicio General</a>
+        <span class="text-slate-700">|</span>
+        <a href="contacto.html" class="hover:text-amber-300 transition-colors">Contacto</a>
+      </div>
+      <p class="font-medium text-slate-300">
+        Seminarios e Institutos de Religión - Área Sudamérica Sur
+      </p>
+      <p class="max-w-xl mx-auto leading-relaxed">
+        © 2026. Todos los derechos reservados. Este sitio está diseñado como una herramienta de preinscripción local y no constituye una comunicación oficial de La Iglesia de Jesucristo de los Santos de los Últimos Días.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Enlace al JS para el menú móvil -->
+  <script src="scripts/seminario.js"></script>
+</body>
+</html>
