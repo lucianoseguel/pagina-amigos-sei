@@ -141,13 +141,13 @@
 
   <aside 
     id="mobile-menu" 
-    class="fixed top-0 right-0 h-full w-72 bg-brandBlue text-white shadow-2xl z-40 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between p-6 pt-24"
+    class="fixed top-0 right-0 h-full w-72 bg-brandBlue text-white shadow-2xl z-40 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between p-6 pt-24 official-background-1"
   >
-    <nav class="flex flex-col space-y-6 text-lg font-semibold">
-      <a href="#" class="mobile-link text-amber-300 flex items-center gap-3">
+    <nav class="flex flex-col space-y-6 text-lg font-semibold ">
+      <a href="#" class="mobile-link hover:text-amber-300 transition-colors flex items-center gap-3">
         <span>Inicio</span>
       </a>
-      <a href="seminario.html" class="mobile-link hover:text-amber-300 transition-colors flex items-center gap-3">
+      <a href="seminario.html" class="mobile-link text-amber-300 flex items-center gap-3">
         <span>Seminarios (14-17)</span>
       </a>
       <a href="instituto.html" class="mobile-link hover:text-amber-300 transition-colors flex items-center gap-3">
@@ -171,11 +171,8 @@
     COMPONENTE: HERO SECTION (BIENVENIDA E IMPACTO)
     ========================================================================
   -->
-  <section class="relative official-background-1 text-white py-16 sm:py-24 px-4 overflow-hidden">
-    <!-- Ilustración de fondo sutil -->
-    <div class="absolute inset-0 opacity-40 flex items-center justify-center pointer-events-none" >
-      <img src="images/Clase-6.jpg" alt="HERO IMG" style="width:150%;"> 
-    </div>
+  <section class="relative official-background-1 text-white py-16 sm:py-24 px-4 overflow-hidden hero-container-seminario">
+   
 
     <div class="relative max-w-5xl mx-auto text-center z-10 animate-fade-in-up ">
       <span class="bg-amber-500/20 text-white-300 px-4 py-1.5  rounded-full text-xs sm:text-sm font-bold tracking-wider uppercase official-background-2 ">
@@ -241,7 +238,7 @@
       <div class="text-center mb-10">
         <span class="text-blue-600 text-sm font-bold uppercase tracking-wider font-semibold">Galería de Experiencias</span>
         <h2 class="text-3xl font-extrabold text-brandBlue tracking-tight mt-1 secondary-font">Tu día en Seminario</h2>
-        <p class="text-slate-600 mt-2 max-w-xl mx-auto">Conoce cómo son nuestras actividades, el estudio dinámico y la gran comunidad que te espera.</p>
+        <p class="text-slate-600 mt-2 max-w-xl mx-auto">Conoce cómo son nuestras actividades, el estudio semanal y la gran comunidad que te espera.</p>
       </div>
 
       <!-- Contenedor Principal del Carrusel -->
@@ -344,45 +341,44 @@
     <!-- Grid de Tres Columnas de Beneficios -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       
-      <!-- Beneficio 1 -->
-      <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-md hover:shadow-xl transition-all-300">
-        <div class="w-12 h-12 bg-blue-100 text-brandBlue rounded-xl flex items-center justify-center mb-5">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-          </svg>
-        </div>
-        <h3 class="text-xl font-bold text-brandBlue mb-2">Dominio de las Escrituras</h3>
-        <p class="text-slate-600 text-sm leading-relaxed">
-          Encuentra respuestas a preguntas profundas y aprende a usar principios eternos para tomar decisiones críticas del día a día de forma segura.
-        </p>
-      </div>
+      <!-- Beneficio 1: De "Estudiar escrituras" a "Claridad en la toma de decisiones" -->
+<div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-md hover:shadow-xl transition-all-300">
+  <div class="w-12 h-12 bg-blue-100 text-brandBlue rounded-xl flex items-center justify-center mb-5">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+    </svg>
+  </div>
+  <h3 class="text-xl font-bold text-brandBlue mb-2">Respuestas para la vida real</h3>
+  <p class="text-slate-600 text-sm leading-relaxed">
+    Aprende a conectar las escrituras con tus desafíos diarios. Transforma dudas en convicción y descubre principios eternos que te ayudarán a tomar buenas decisiones en la escuela, tus relaciones y tu futuro.
+  </p>
+</div>
 
-      <!-- Beneficio 2 -->
-      <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-md hover:shadow-xl transition-all-300">
-        <div class="w-12 h-12 bg-amber-100 text-brandGold rounded-xl flex items-center justify-center mb-5">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-          </svg>
-        </div>
-        <h3 class="text-xl font-bold text-brandBlue mb-2">Comunidad Segura</h3>
-        <p class="text-slate-600 text-sm leading-relaxed">
-          Construye relaciones saludables con jóvenes de tu edad que comparten tu fe y tus principios espirituales en un espacio sin juzgar.
-        </p>
-      </div>
+<!-- Beneficio 2: De "Comunidad" a "Círculo de confianza sin presiones" -->
+<div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-md hover:shadow-xl transition-all-300">
+  <div class="w-12 h-12 bg-amber-100 text-brandGold rounded-xl flex items-center justify-center mb-5">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+    </svg>
+  </div>
+  <h3 class="text-xl font-bold text-brandBlue mb-2">Amistades que suman</h3>
+  <p class="text-slate-600 text-sm leading-relaxed">
+    Rodéate de jóvenes que entienden tu mundo y respetan tus prioridades. Un entorno seguro donde puedes expresarte con libertad, reír, crecer y construir amistades eternas.
+  </p>
+</div>
 
-      <!-- Beneficio 3 -->
-      <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-md hover:shadow-xl transition-all-300">
-        <div class="w-12 h-12 bg-emerald-100 text-emerald-700 rounded-xl flex items-center justify-center mb-5">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
-          </svg>
-        </div>
-        <h3 class="text-xl font-bold text-brandBlue mb-2">Desarrollo Personal</h3>
-        <p class="text-slate-600 text-sm leading-relaxed">
-          Gana disciplina, habilidades para hablar en público, análisis crítico y la habilidad para guiar y enseñar a otros en cualquier entorno.
-        </p>
-      </div>
-
+<!-- Beneficio 3: De "Desarrollo personal" a "Liderazgo y preparación vital" -->
+<div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-md hover:shadow-xl transition-all-300">
+  <div class="w-12 h-12 bg-emerald-100 text-emerald-700 rounded-xl flex items-center justify-center mb-5">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+    </svg>
+  </div>
+  <h3 class="text-xl font-bold text-brandBlue mb-2">Preparación para tu futuro</h3>
+  <p class="text-slate-600 text-sm leading-relaxed">
+    Desarrolla autodisciplina, pensamiento crítico y habilidades de comunicación. Al completar tu ciclo, no solo recibes un diploma, sino herramientas de vida para la misión, la universidad y la vida adulta.
+  </p>
+</div>
     </div>
   </section>
 

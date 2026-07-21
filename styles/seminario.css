@@ -20,3 +20,18 @@
 .official-background-2{
   background-color: var(--backgound2--) !important;
 }
+
+
+/* Imagen del Hero */
+
+.hero-container-seminario{
+  padding-top: 6rem;
+  display: flex;
+  flex-direction: column;
+  
+  background-image: url(../images/Clase-6.jpg);
+  background-size: cover;
+  width: 100vw;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
