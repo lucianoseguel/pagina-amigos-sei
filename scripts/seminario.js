@@ -146,35 +146,67 @@ document.addEventListener("DOMContentLoaded", function() {
         }
       }
 
-      // === LÓGICA DE ENVÍO DE FORMULARIO ===
-      formSeminario.addEventListener("submit", function(event) {
+// === LÓGICA DE ENVÍO DE FORMULARIO ===
+      formSeminario.addEventListener("submit", async function(event) {
         // Detener la recarga nativa de la página
         event.preventDefault();
 
-        // 1. Obtención de los valores del formulario
-        const nombreEst = document.getElementById("nombre-estudiante").value.trim();
-        const edadEst = document.getElementById("edad-estudiante").value;
-        const nombrePadre = document.getElementById("nombre-padre").value.trim();
-        const telefono = document.getElementById("telefono-contacto").value.trim();
-        const modalitySelect = document.getElementById("modalidad");
-        const modalidadTexto = modalitySelect.options[modalitySelect.selectedIndex].text;
+        // 1. Obtención SEGURA de los elementos (usando operador opcional '?.' para no romper el código)
+        const inputNombre = document.getElementById("nombre-estudiante");
+        const inputEdad = document.getElementById("edad-estudiante");
+        const inputContacto = document.getElementById("contacto");
+        const inputEstaca = document.getElementById("estaca-barrio");
 
-        // 2. Validación básica de seguridad
-        if (!nombreEst || !edadEst || !nombrePadre || !telefono || !modalitySelect.value) {
-          return; // Detiene el flujo si hay campos obligatorios vacíos
+        // Extraer valores o usar texto vacío si el campo no existe en este formulario
+        const nombreEst = inputNombre ? inputNombre.value.trim() : "";
+        const edadEst = inputEdad ? inputEdad.value : "";
+        const contactoEst = inputContacto ? inputContacto.value.trim() : "";
+        const estacaEst = inputEstaca ? inputEstaca.value.trim() : "";
+
+        // 2. Validación básica
+        if (!nombreEst || !edadEst || !contactoEst) {
+          alert("Por favor completa los campos obligatorios.");
+          return;
         }
 
-        // 3. Simulación de procesamiento de datos y visualización del mensaje
-        confirmarNombre.textContent = nombreEst;
-        confirmarModalidad.textContent = modalidadTexto;
-        confirmarTutor.textContent = nombrePadre;
+        // Obtener elementos de la pantalla de éxito si existen
+        const confirmarNombre = document.getElementById("confirmar-nombre");
+        const mensajeExito = document.getElementById("mensaje-exito");
+        const btnSubmit = formSeminario.querySelector('button[type="submit"]');
 
-        // Transición de ocultar formulario y mostrar éxito
-        formSeminario.classList.add("hidden");
-        mensajeExito.classList.remove("hidden");
+        // Deshabilitar botón mientras envía
+        if (btnSubmit) btnSubmit.disabled = true;
 
-        // Desplazamiento fluido hacia el mensaje para mejor usabilidad móvil
-        mensajeExito.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        try {
+          // 3. Envío Real a Web3Forms
+          const formData = new FormData(formSeminario);
+          const response = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: formData
+          });
+
+          const data = await response.json();
+
+          if (response.ok && data.success) {
+            // Rellenar datos en la pantalla de éxito (si esos span existen en tu HTML)
+            if (confirmarNombre) confirmarNombre.textContent = nombreEst;
+
+            // Ocultar formulario y mostrar éxito
+            formSeminario.classList.add("hidden");
+            if (mensajeExito) {
+              mensajeExito.classList.remove("hidden");
+              mensajeExito.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+              alert("¡Preinscripción enviada con éxito!");
+            }
+          } else {
+            alert(data.message || "Ocurrió un error al enviar el formulario.");
+          }
+        } catch (error) {
+          alert("Error de conexión. Inténtalo de nuevo.");
+        } finally {
+          if (btnSubmit) btnSubmit.disabled = false;
+        }
       });
     });
 
@@ -183,8 +215,12 @@ document.addEventListener("DOMContentLoaded", function() {
       const formSeminario = document.getElementById("form-seminario");
       const mensajeExito = document.getElementById("mensaje-exito");
       
-      formSeminario.reset();
-      mensajeExito.classList.add("hidden");
-      formSeminario.classList.remove("hidden");
-      formSeminario.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      if (formSeminario) {
+        formSeminario.reset();
+        formSeminario.classList.remove("hidden");
+        formSeminario.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+      if (mensajeExito) {
+        mensajeExito.classList.add("hidden");
+      }
     }
