@@ -381,28 +381,27 @@
     </div>
   </section>
 
-  <!-- 
-    ========================================================================
-    COMPONENTE: FORMULARIO DE PREINSCRIPCIÓN
-    ========================================================================
-  -->
+ <!-- ========================================================================
+     COMPONENTE: FORMULARIO DE PREINSCRIPCIÓN (INSTITUTO)
+     ======================================================================== -->
   <section id="inscripcion" class="py-16 px-4 bg-slate-100 border-t border-b border-slate-200">
     <div class="max-w-3xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200">
       
       <!-- Encabezado de la Tarjeta del Formulario -->
       <div class="official-background-1 text-white p-8 text-center">
-        <h2 class="text-2xl sm:text-3xl font-extrabold mb-2">Formulario de Inscripción</h2>
-        <p class="text-blue-200 text-sm">Completa tus datos para iniciar tu proceso en Instituto. Un líder o maestro de tu estaca se contactará contigo.</p>
+        <h2 class="text-2xl sm:text-3xl font-extrabold mb-2">Formulario de Inscripción - Instituto</h2>
+        <p class="text-blue-200 text-sm">Completa tus datos para iniciar tu proceso en Instituto. Un líder o maestro se contactará contigo.</p>
       </div>
 
       <!-- Formulario Conectado a Web3Forms -->
-      <form action="https://api.web3forms.com/submit" method="POST" id="form-instituto" class="p-8 space-y-6">
+      <form id="form-instituto" class="p-8 space-y-6">
         
         <!-- Tu Access Key de Web3Forms -->
         <input type="hidden" name="access_key" value="ca4a2db3-8266-40c5-985d-d158b041d277">
+        <input type="hidden" name="from_name" value="Inscripciones Instituto">
         
-        <!-- Asunto del correo que vas a recibir (Opcional) -->
-        <input type="hidden" name="subject" value="Nueva Preinscripción a Seminario">
+        <!-- Asunto del correo corregido -->
+        <input type="hidden" name="subject" value="Nueva Preinscripción a Instituto">
 
         <!-- Sección 1: Datos del Estudiante -->
         <div>
@@ -451,7 +450,7 @@
           </div>
         </div>
 
-        <!-- Sección 3: Ubicación y Preferencia Eclesiástica -->
+        <!-- Sección 2: Ubicación y Contacto -->
         <div>
           <h3 class="text-lg font-bold text-brandBlue border-b border-slate-100 pb-2 mb-4">Ubicación y Contacto</h3>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -470,22 +469,26 @@
               <input 
                 type="text" 
                 id="contacto" 
-                name="contacto" 
+                name="email" 
                 required 
-                placeholder="Ej. +54 9 11 1234-5678 o correo@ejemplo.com"
+                placeholder="Ej. correo@ejemplo.com o +54 9 11 1234-5678"
                 class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brandBlue focus:border-brandBlue outline-none text-sm transition-all"
               >
             </div>
           </div>
         </div>
 
+        <!-- Div para mostrar el estado del envío -->
+        <div id="resultado-instituto" class="hidden p-4 rounded-xl text-center text-sm font-semibold"></div>
+
         <!-- Botón de Envío -->
         <div class="pt-4">
           <button 
             type="submit" 
+            id="btn-submit-inst"
             class="w-full official-background-1 text-white font-bold py-4 rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5 text-center flex items-center justify-center gap-2 cursor-pointer"
           >
-            <span>Enviar preinscripción</span>
+            <span id="texto-btn-inst">Enviar preinscripción a Instituto</span>
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
             </svg>
@@ -517,14 +520,6 @@
     </div>
   </footer>
 
-  <!-- 
-    ========================================================================
-    COMPONENTE: FUNCIONALIDAD INTERACTIVA (JAVASCRIPT) - 'seminario.js'
-    Si decides separar este archivo en seminario.js, copia todo el contenido
-    dentro de estas etiquetas de script y enlázalo en tu HTML con:
-    <script src="seminario.js"></script>
-    ========================================================================
-  -->
-  <script src="scripts/seminario.js"></script>
+    <script src="scripts/instituto.js"></script>
 </body>
 </html>
