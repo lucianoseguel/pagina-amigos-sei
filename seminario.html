@@ -392,146 +392,117 @@
     ========================================================================
   -->
   <section id="inscripcion" class="py-16 px-4 bg-slate-100 border-t border-b border-slate-200">
-    <div class="max-w-3xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200">
+  <div class="max-w-3xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200">
+    
+    <!-- Encabezado de la Tarjeta del Formulario -->
+    <div class="official-background-1 text-white p-8 text-center">
+      <h2 class="text-2xl sm:text-3xl font-extrabold mb-2">Formulario de Inscripción</h2>
+      <p class="text-blue-200 text-sm">Completa tus datos para iniciar tu proceso en Seminario. Un líder o maestro de tu estaca se contactará contigo.</p>
+    </div>
+
+    <!-- Formulario Conectado a Web3Forms -->
+    <form action="https://api.web3forms.com/submit" method="POST" id="form-seminario" class="p-8 space-y-6">
       
-      <!-- Encabezado de la Tarjeta del Formulario -->
-      <div class="official-background-1 text-white p-8 text-center">
-        <h2 class="text-2xl sm:text-3xl font-extrabold mb-2">Formulario de Inscripción</h2>
-        <p class="text-blue-200 text-sm">Completa tus datos para iniciar tu proceso en Seminario. Un líder o maestro de tu estaca se contactará contigo.</p>
+      <!-- Tu Access Key de Web3Forms (Reemplaza este valor) -->
+      <input type="hidden" name="access_key" value="ca4a2db3-8266-40c5-985d-d158b041d277">
+      
+      <!-- Asunto del correo que vas a recibir -->
+      <input type="hidden" name="subject" value="Nueva Preinscripción a Seminario">
+
+      <!-- Anti-Spam Honeypot (Oculto para los usuarios, bloquea bots) -->
+      <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+      <!-- Sección 1: Datos del Estudiante -->
+      <div>
+        <h3 class="text-lg font-bold text-brandBlue border-b border-slate-100 pb-2 mb-4">Datos del Estudiante</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="nombre-estudiante" class="block text-xs font-semibold text-slate-600 uppercase mb-1">Nombre Completo *</label>
+            <input 
+              type="text" 
+              id="nombre-estudiante" 
+              name="nombre_completo" 
+              required 
+              placeholder="Ej. Juan Pérez"
+              class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brandBlue focus:border-brandBlue outline-none text-sm transition-all"
+            >
+          </div>
+          <div>
+            <label for="edad-estudiante" class="block text-xs font-semibold text-slate-600 uppercase mb-1">Edad (18 a 35) *</label>
+            <select 
+              id="edad-estudiante" 
+              name="edad" 
+              required 
+              class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brandBlue focus:border-brandBlue outline-none text-sm bg-white transition-all"
+            >
+              <option value="">Selecciona tu edad</option>
+              <option value="18">18 años</option>
+              <option value="19">19 años</option>
+              <option value="20">20 años</option>
+              <option value="21">21 años</option>
+              <option value="22">22 años</option>
+              <option value="23">23 años</option>
+              <option value="24">24 años</option>
+              <option value="25">25 años</option>
+              <option value="26">26 años</option>
+              <option value="27">27 años</option>
+              <option value="28">28 años</option>
+              <option value="29">29 años</option>
+              <option value="30">30 años</option>
+              <option value="31">31 años</option>
+              <option value="32">32 años</option>
+              <option value="33">33 años</option>
+              <option value="34">34 años</option>
+              <option value="35">35 años</option>
+            </select>
+          </div>
+        </div>
       </div>
 
-      <!-- Formulario Real -->
-      <form id="form-seminario" class="p-8 space-y-6">
-        
-        <!-- Sección 1: Datos del Estudiante -->
-        <div>
-          <h3 class="text-lg font-bold text-brandBlue border-b border-slate-100 pb-2 mb-4">Datos del Estudiante</h3>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label for="nombre-estudiante" class="block text-xs font-semibold text-slate-600 uppercase mb-1">Nombre Completo *</label>
-              <input 
-                type="text" 
-                id="nombre-estudiante" 
-                required 
-                placeholder="Ej. Juan Pérez"
-                class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brandBlue focus:border-brandBlue outline-none text-sm transition-all"
-              >
-            </div>
-            <div>
-              <label for="edad-estudiante" class="block text-xs font-semibold text-slate-600 uppercase mb-1">Edad (14 a 17) *</label>
-              <select 
-                id="edad-estudiante" 
-                required 
-                class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brandBlue focus:border-brandBlue outline-none text-sm bg-white transition-all"
-              >
-                <option value="">Selecciona tu edad</option>
-                <option value="14">14 años</option>
-                <option value="15">15 años</option>
-                <option value="16">16 años</option>
-                <option value="17">17 años</option>
-              </select>
-            </div>
+      <!-- Sección 3: Ubicación y Preferencia Eclesiástica -->
+      <div>
+        <h3 class="text-lg font-bold text-brandBlue border-b border-slate-100 pb-2 mb-4">Ubicación y Contacto</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="estaca-barrio" class="block text-xs font-semibold text-slate-600 uppercase mb-1">Estaca y Barrio (si aplica)</label>
+            <input 
+              type="text" 
+              id="estaca-barrio" 
+              name="estaca_barrio" 
+              placeholder="Ej. Estaca Mendoza, Barrio Central"
+              class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brandBlue focus:border-brandBlue outline-none text-sm transition-all"
+            >
+          </div>
+          <div>
+            <label for="contacto" class="block text-xs font-semibold text-slate-600 uppercase mb-1">Información de Contacto *</label>
+            <input 
+              type="text" 
+              id="contacto" 
+              name="contacto" 
+              required 
+              placeholder="Ej. +54 9 11 1234-5678 o correo@ejemplo.com"
+              class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brandBlue focus:border-brandBlue outline-none text-sm transition-all"
+            >
           </div>
         </div>
+      </div>
 
-        <!-- Sección 2: Datos de Contacto y Padres -->
-        <div>
-          <h3 class="text-lg font-bold text-brandBlue border-b border-slate-100 pb-2 mb-4">Datos de los Padres / Tutor</h3>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label for="nombre-padre" class="block text-xs font-semibold text-slate-600 uppercase mb-1">Nombre de la Madre, Padre o Tutor *</label>
-              <input 
-                type="text" 
-                id="nombre-padre" 
-                required 
-                placeholder="Ej. María Gómez"
-                class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brandBlue focus:border-brandBlue outline-none text-sm transition-all"
-              >
-            </div>
-            <div>
-              <label for="telefono-contacto" class="block text-xs font-semibold text-slate-600 uppercase mb-1">Teléfono de Contacto (WhatsApp) *</label>
-              <input 
-                type="tel" 
-                id="telefono-contacto" 
-                required 
-                placeholder="+54 9 11 1234-5678"
-                class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brandBlue focus:border-brandBlue outline-none text-sm transition-all"
-              >
-            </div>
-          </div>
-        </div>
-
-        <!-- Sección 3: Ubicación y Preferencia Eclesiástica -->
-        <div>
-          <h3 class="text-lg font-bold text-brandBlue border-b border-slate-100 pb-2 mb-4">Ubicación y Preferencias</h3>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label for="estaca-barrio" class="block text-xs font-semibold text-slate-600 uppercase mb-1">Estaca y Barrio (si aplica)</label>
-              <input 
-                type="text" 
-                id="estaca-barrio" 
-                placeholder="Ej. Estaca Mendoza, Barrio Central"
-                class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brandBlue focus:border-brandBlue outline-none text-sm transition-all"
-              >
-            </div>
-            <div>
-              <label for="modalidad" class="block text-xs font-semibold text-slate-600 uppercase mb-1">Preferencia de Horario / Clase *</label>
-              <select 
-                id="modalidad" 
-                required 
-                class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brandBlue focus:border-brandBlue outline-none text-sm bg-white transition-all"
-              >
-                <option value="">Selecciona una modalidad</option>
-                <option value="presencial-manana">Presencial - Mañana (Antes de la escuela)</option>
-                <option value="presencial-tarde">Presencial - Tarde/Noche</option>
-                <option value="online">Online / Virtual</option>
-                <option value="indefinido">Consultar opciones disponibles</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        <!-- Botón de Envío -->
-        <div class="pt-4">
-          <button 
-            type="submit" 
-            class="w-full official-background-1 text-white font-bold py-4 rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5 text-center flex items-center justify-center gap-2"
-          >
-            <span>Enviar preinscripción</span>
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
-            </svg>
-          </button>
-        </div>
-
-      </form>
-
-      <!-- Mensaje dinámico de Éxito al Enviar Formulario (Oculto por defecto) -->
-      <div id="mensaje-exito" class="hidden p-8 text-center bg-slate-50 border-t border-slate-200 animate-fade-in-up">
-        <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4">
-          <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
-          </svg>
-        </div>
-        <h3 class="text-2xl font-bold text-emerald-800 mb-2">¡Inscripción Recibida!</h3>
-        <p class="text-slate-600 text-sm max-w-md mx-auto mb-6">
-          Gracias, <span id="confirmar-nombre" class="font-bold text-slate-800"></span>. Se ha guardado tu solicitud para ingresar a Seminario en la modalidad de <strong id="confirmar-modalidad" class="text-brandBlue"></strong>.
-        </p>
-        <div class="bg-blue-50 border border-blue-200 rounded-2xl p-4 text-left max-w-md mx-auto text-xs text-brandBlue-dark space-y-2 mb-6">
-          <p class="font-bold">Siguientes Pasos:</p>
-          <p>1. Nos contactaremos con el tutor <strong id="confirmar-tutor"></strong> al teléfono de contacto suministrado.</p>
-          <p>2. Coordinaremos los materiales de lectura y te daremos acceso al grupo de tu clase local.</p>
-        </div>
+      <!-- Botón de Envío -->
+      <div class="pt-4">
         <button 
-          onclick="reiniciarFormulario()"
-          class="text-xs text-slate-500 underline hover:text-brandBlue font-semibold transition-colors"
+          type="submit" 
+          class="w-full official-background-1 text-white font-bold py-4 rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5 text-center flex items-center justify-center gap-2 cursor-pointer"
         >
-          Inscribir a otro estudiante
+          <span>Enviar preinscripción</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+          </svg>
         </button>
       </div>
 
-    </div>
-  </section>
+    </form>
+  </div>
+</section>
 
   <!-- 
     ========================================================================
