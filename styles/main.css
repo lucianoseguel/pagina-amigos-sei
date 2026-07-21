@@ -90,3 +90,25 @@ html,body{
   color: red;
 }
 
+
+
+/**------------------------------------------------------------------------
+ **                            Boton de Whatsapp
+ *------------------------------------------------------------------------**/
+
+
+ /* Animación suave para la apertura del Pop-up */
+    .popup-open {
+      opacity: 1 !important;
+      transform: scale(1) !important;
+      pointer-events: auto !important;
+    }
+    .popup-closed {
+      opacity: 0 !important;
+      transform: scale(0.95) !important;
+      pointer-events: none !important;
+    }
+
+
+/*============================ END OF boton de whatsapp ============================*/
+
