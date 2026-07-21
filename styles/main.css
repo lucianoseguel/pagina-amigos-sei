@@ -71,7 +71,7 @@ html,body{
   flex-direction: column;
   background-image: url(../images/jesucristo-hero.png);
   background-size: cover;
-  height: 100vh;
+  background-position: center center;
   width: 100vw;
   overflow: hidden;
   margin-bottom: 2rem;
@@ -89,3 +89,4 @@ html,body{
 .ico-programa:hover{
   color: red;
 }
+
