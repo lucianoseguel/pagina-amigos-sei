@@ -45,7 +45,7 @@
     quickButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         const topic = btn.getAttribute('data-topic');
-        messageInput.value = `Hola, quisiera realizar una consulta sobre: ${topic}.`;
+        messageInput.value = `Hola, quisiera realizar una consulta sobre ${topic}.`;
         messageInput.focus();
       });
     });
