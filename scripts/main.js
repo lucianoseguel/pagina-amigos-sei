@@ -160,3 +160,21 @@ function irAPagina(destino) {
 function gotopage(pagina) {
  window.location.href = pagina;
 }
+
+
+/**========================================================================
+ *                           Cargador de pagina
+ *========================================================================**/
+
+// JAVASCRIPT SIMPLE PARA OCULTAR AL COMPLETAR LA CARGA
+window.addEventListener('load', () => {
+  const loader = document.getElementById('loader');
+  
+  // Agregamos la clase que inicia la transición CSS
+  loader.classList.add('ocultar');
+  
+  // Opcional: remover del DOM después de la animación de 0.5s
+  setTimeout(() => {
+    loader.style.display = 'none';
+  }, 500);
+});
