@@ -181,9 +181,6 @@
         Tu refugio espiritual <br class="hidden sm:inline">
         <span class="text-amber-400">en medio de la rutina diaria</span>
         </h1>
-        <p class="text-lg sm:text-xl text-slate-200 max-w-2xl mx-auto mb-8 leading-relaxed">
-        Estudia las escrituras, encuentra respuestas para tus decisiones de vida, fortalece tu fe en Jesucristo y conecta con una comunidad que comparte tus mismos valores.
-        </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="#inscripcion" class="bg-brandGold hover:bg-brandGold-dark text-white font-extrabold text-base px-8 py-4 rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5 text-center hero-button-instituto">
             Inscribirme en un curso
@@ -192,35 +189,21 @@
     </div>
   </section>
 
+
   <!-- 
     ========================================================================
-    COMPONENTE: SECCIÓN DE VIDEO (PRIMERO EN LA LISTA)
+    COMPONENTE: CITA DEL PTE. OAKS
     ========================================================================
   -->
-  <section id="video-seccion" class="py-16 px-4 bg-white border-b border-slate-100">
-    <div class="max-w-4xl mx-auto text-center">
-      <div class="mb-8">
-        <span class="text-amber-500 text-sm font-bold uppercase tracking-wider primary-font">MENSAJE PROFETICO </span>
-        <h2 class="text-3xl font-extrabold text-brandBlue tracking-tight mt-1 secondary-font">¿Por qué asistir a Instituto?</h2>
-        <p class="text-slate-600 mt-2 max-w-xl mx-auto">
-          Escucha la invitación del Presidente Dallin H. Oaks de por que es tan importante asistir a instituto a esta edad
-        </p>
-      </div>
 
-      <!-- Contenedor del video responsivo con relación de aspecto 16:9 -->
-      <div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl border-4 border-slate-100 bg-slate-900 transition-all duration-300 hover:shadow-brandBlue/10">
-        <!-- Iframe optimizado de YouTube con controles e inicio limpio -->
-        <iframe 
-          id="promo-video"
-          class="absolute top-0 left-0 w-full h-full"
-          src="https://www.youtube.com/embed/3BBtY6ajThc" 
-          title="Invitación personal a asistir a Instituto" 
-          frameborder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-          allowfullscreen>
-        </iframe>
-      </div>
-      
+  <section class="bg-white py-12 px-4 border-b border-slate-200">
+    <div class="max-w-4xl mx-auto text-center">
+      <blockquote class="text-xl sm:text-2xl font-medium text-brandBlue italic leading-relaxed mb-4">
+        "Les prometo que su tiempo en instituto les traerá la paz, el gozo y el amor divino del Salvador."
+      </blockquote>
+      <cite class="not-italic text-sm sm:text-base font-semibold text-slate-600 block">
+        — Dallin H. Oaks, <span class="text-slate-600 font-normal">Presidente de La Iglesia de Jesucristo de los Santos de los Últimos Días</span>
+      </cite>
     </div>
   </section>
 
@@ -229,6 +212,7 @@
     COMPONENTE: CARRUSEL DE IMÁGENES (SEGUNDO EN LA LISTA)
     ========================================================================
   -->
+
   <section id="carrusel-seccion" class="py-16 px-4 bg-slate-100 border-b border-slate-200">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-10">
@@ -249,14 +233,9 @@
               src="images/instituto_Rivera.jpg" 
               alt="Estudio interactivo de Escrituras" 
               class="carousel-image"
-              
             >
-            <!-- Overlay gradiente para el texto -->
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex flex-col justify-end p-6 sm:p-12 text-white">
-              <span class="text-amber-400 text-xs sm:text-sm font-bold uppercase tracking-widest mb-1">Clases Semanales</span>
-              <h3 class="text-xl sm:text-3xl font-bold mb-2">Un hábito que transforma tu mente</h3>
-              <p class="text-slate-200 text-xs sm:text-sm max-w-lg hidden sm:block">Dedicar tiempo en la semana a fortalecer tu espiritualidad te brinda paz e inteligencia para enfrentar los desafíos del estudio y el trabajo.</p>
-            </div>
+            <!-- Overlay gradiente sutil para mantener contraste con los controles -->
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent"></div>
           </div>
 
           <!-- Slide 2: Amigos y comunidad -->
@@ -267,11 +246,7 @@
               class="carousel-image"
               onerror="this.src='https://placehold.co/1200x600/0b2f64/ffffff?text=Amistades+Verdaderas'"
             >
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex flex-col justify-end p-6 sm:p-12 text-white">
-              <span class="text-amber-400 text-xs sm:text-sm font-bold uppercase tracking-widest mb-1">Buenas Amistades</span>
-              <h3 class="text-xl sm:text-3xl font-bold mb-2">Amistades basadas en valores eternos</h3>
-              <p class="text-slate-200 text-xs sm:text-sm max-w-lg hidden sm:block">Rodeate de jóvenes con tus mismos desafios que te impulsen a ser tu mejor versión y tomar mejores desiciones.</p>
-            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent"></div>
           </div>
 
           <!-- Slide 3: Logro académico y espiritual -->
@@ -282,11 +257,7 @@
               class="carousel-image"
               onerror="this.src='https://placehold.co/1200x600/0b2f64/ffffff?text=Logros+y+Graduacion'"
             >
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex flex-col justify-end p-6 sm:p-12 text-white">
-              <span class="text-amber-400 text-xs sm:text-sm font-bold uppercase tracking-widest mb-1">Ímpetu Espiritual</span>
-              <h3 class="text-xl sm:text-3xl font-bold mb-2">Acércate a Jesucristo</h3>
-              <p class="text-slate-200 text-xs sm:text-sm max-w-lg hidden sm:block">Fortalece tu relación con Tu Padre Celestial y Jesucristo, aprende a seguirlos más fielmente.</p>
-            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent"></div>
           </div>
 
         </div>
@@ -379,16 +350,76 @@
     </div>
   </section>
 
+  <!-- 
+    ========================================================================
+    COMPONENTE: SECCIÓN DE VIDEO (PRIMERO EN LA LISTA)
+    ========================================================================
+  -->
+  <section id="video-seccion" class="py-16 px-4 bg-white border-b border-slate-100">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="mb-8">
+        <span class="text-amber-500 text-sm font-bold uppercase tracking-wider primary-font">MENSAJE PROFETICO </span>
+        <h2 class="text-3xl font-extrabold text-brandBlue tracking-tight mt-1 secondary-font">¿Por qué asistir a Instituto?</h2>
+        <p class="text-slate-600 mt-2 max-w-xl mx-auto">
+          Escucha la invitación del Presidente Dallin H. Oaks de por que es tan importante asistir a instituto a esta edad
+        </p>
+      </div>
+
+      <!-- Contenedor del video responsivo con relación de aspecto 16:9 -->
+      <div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl border-4 border-slate-100 bg-slate-900 transition-all duration-300 hover:shadow-brandBlue/10">
+        <!-- Iframe optimizado de YouTube con controles e inicio limpio -->
+        <iframe 
+          id="promo-video"
+          class="absolute top-0 left-0 w-full h-full"
+          src="https://www.youtube.com/embed/3BBtY6ajThc" 
+          title="Invitación personal a asistir a Instituto" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen>
+        </iframe>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- Mapa Localizador de Instituto -->
+  <div id="map-container" class="w-full max-w-2xl bg-white rounded-2xl border border-slate-200 shadow-xl pt-8 px-8 pb-10 mt-8 transition-all duration-300 animate-fade-in-up mx-auto text-center">
+  
+  <div class="mx-auto w-12 h-12 bg-amber-50 text-brandGold rounded-full flex items-center justify-center mb-3">
+    <svg class="w-6 h-6 stroke-current fill-none" viewBox="0 0 24 24" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6.75V15m-7.425-4.125a3 3 0 1 1 3.596 0M9 21l-4.223-2.112a1.5 1.5 0 0 1-.777-1.332V4.97a1.5 1.5 0 0 1 2.223-1.332L9 4.5l6-1.125 4.223 2.112a1.5 1.5 0 0 1 .777 1.332V19.03a1.5 1.5 0 0 1-2.223 1.332L15 19.5l-6 1.125Z" />
+    </svg>
+  </div>
+
+  <h3 class="text-lg font-bold text-slate-800">📍 Localizador de Clases y Estacas</h3>
+  <p class="text-sm text-slate-500 max-w-md mx-auto mt-1 mb-6">
+    Accede al mapa interactivo global para encontrar clases y horarios disponibles.
+  </p>
+  
+  <a 
+    id="map-link" 
+    href="https://myinstitute.churchofjesuschrist.org/findClasses" 
+    target="_blank" 
+    class="inline-flex items-center justify-center px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white font-medium text-sm rounded-xl transition-all duration-200 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-slate-900 focus:ring-offset-2"
+  >
+    <span>Buscar Clases en mi Ubicación</span>
+    <svg class="w-4 h-4 ml-2 fill-current" viewBox="0 0 20 20">
+      <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 0 0 1.06 0l7.22-7.22v5.69a.75.75 0 0 0 1.5 0v-7.5a.75.75 0 0 0-.75-.75h-7.5a.75.75 0 0 0 0 1.5h5.69l-7.22 7.22a.75.75 0 0 0 0 1.06Z" clip-rule="evenodd" />
+    </svg>
+  </a>
+</div>
+
+
  <!-- ========================================================================
-     COMPONENTE: FORMULARIO DE PREINSCRIPCIÓN (INSTITUTO)
+     COMPONENTE: FORMULARIO DE CONTACTO (INSTITUTO)
      ======================================================================== -->
   <section id="inscripcion" class="py-16 px-4 bg-slate-100 border-t border-b border-slate-200">
     <div class="max-w-3xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200">
       
       <!-- Encabezado de la Tarjeta del Formulario -->
       <div class="official-background-1 text-white p-8 text-center">
-        <h2 class="text-2xl sm:text-3xl font-extrabold mb-2">Formulario de Inscripción - Instituto</h2>
-        <p class="text-blue-200 text-sm">Completa tus datos para iniciar tu proceso en Instituto. Un líder o maestro se contactará contigo.</p>
+        <h2 class="text-2xl sm:text-3xl font-extrabold mb-2">Formulario de Contacto - Instituto</h2>
+        <p class="text-blue-200 text-sm">Completa tus datos para saber más acerca de Instituto. Un líder o maestro se contactará contigo.</p>
       </div>
 
       <!-- Formulario Conectado a Web3Forms -->

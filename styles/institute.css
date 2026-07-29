@@ -37,3 +37,64 @@ body {
 .hero-button-instituto{
   margin: auto;
 }
+
+/* Sección general de la cita */
+.quote-section {
+  background-color: #f9fafb; /* Un tono gris muy suave para distinguirla del hero */
+  padding: 4rem 1.5rem;      /* Espaciado superior/inferior y laterales */
+  text-align: center;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Contenedor para limitar el ancho y que no se extienda demasiado en pantallas grandes */
+.quote-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Estilo del texto de la cita */
+.quote-text {
+  font-size: 1.5rem;       /* Tamaño grande y legible */
+  font-style: italic;
+  color: #1f2937;          /* Color de texto oscuro para buen contraste */
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+/* Opcional: Añadir comillas decorativas grandes */
+.quote-text::before {
+  content: "“";
+  font-size: 4rem;
+  color: #9ca3af;
+  position: absolute;
+  top: -2rem;
+  left: -1.5rem;
+  opacity: 0.4;
+}
+
+/* Estilo del autor */
+.quote-author {
+  font-size: 1.1rem;
+  font-style: normal;
+  font-weight: 600;
+  color: #4b5563;
+  display: block;
+}
+
+/* Estilo para el cargo o rol del autor (opcional) */
+.quote-role {
+  font-weight: 400;
+  color: #9ca3af;
+}
+
+/* Adaptación para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+  .quote-text {
+    font-size: 1.25rem;
+  }
+  .quote-text::before {
+    display: none; /* Oculta la comilla flotante en móviles para ahorrar espacio */
+  }
+}
