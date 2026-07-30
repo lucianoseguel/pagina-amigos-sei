@@ -224,3 +224,181 @@ document.addEventListener("DOMContentLoaded", function() {
         mensajeExito.classList.add("hidden");
       }
     }
+
+
+
+  /*===================================================
+  COMPONENTE DE BENEFICIOS
+  ====================================================*/
+
+        const tabData = {
+            respuestas: {
+                badge: "Espiritual & Decisiones",
+                badgeStyle: "bg-blue-50 text-brandBlue-700 border-blue-200",
+                iconBg: "from-blue-500 to-brandBlue-700",
+                title: "Respuestas para tu vida",
+                subtitle: "Aprende a conectar las escrituras con tus desafíos diarios.",
+                description: "En Seminario descubrirás respuestas claras a tus interrogantes. Transforma tus dudas en convicción profunda y adquiere principios eternos que te guiarán para tomar mejores decisiones en tus estudios, relaciones y futuro.",
+                highlights: [
+                    "Dominio de temas doctrinales contemporáneos",
+                    "Aprender a reconocer y recibir revelación personal",
+                    "Principios prácticos para metas personales y espirituales"
+                ],
+                quote: "«Seminario me ayudó a tener claridad en momentos clave donde no sabía qué decisión tomar.»"
+            },
+            amistades: {
+                badge: "Comunidad & Valores",
+                badgeStyle: "bg-amber-50 text-amber-700 border-amber-200",
+                iconBg: "from-amber-400 to-brandGold-600",
+                title: "Amistades eternas",
+                subtitle: "Rodéate de jóvenes que comparten tus mismos principios.",
+                description: "Construye amistades verdaderas en un entorno seguro y libre de presiones sociales negativas. Un espacio donde puedes expresarte con libertad, compartir experiencias y apoyarte mutuamente en tu fe.",
+                highlights: [
+                    "Ambiente seguro, respetuoso y positivo",
+                    "Red de amigos que se fortalecen mutuamente",
+                    "Actividades integradoras y aprendizaje colaborativo"
+                ],
+                quote: "«Aquí encontré a mis mejores amigos, personas con las que puedo ser verdaderamente yo mismo.»"
+            },
+            futuro: {
+                badge: "Crecimiento & Liderazgo",
+                badgeStyle: "bg-purple-50 text-purple-700 border-purple-200",
+                iconBg: "from-purple-500 to-indigo-600",
+                title: "Preparación para tu futuro",
+                subtitle: "Desarrolla una perspectiva más elevada de tu potencial divino.",
+                description: "Asistir a Seminario te entrena de forma integral. Fortalece hábitos de estudio, disciplina personal y liderazgo espiritual que te servirán para la universidad, una misión, tu carrera y la vida familiar.",
+                highlights: [
+                    "Hábitos diarios de lectura y enfoque mental",
+                    "Preparación clave para la educación secular y el servicio",
+                    "Desarrollo de habilidades de liderazgo centrado en valores"
+                ],
+                quote: "«La rutina de Seminario me enseñó la autodisciplina que hoy aplico con éxito en mis estudios.»"
+            },
+            horarios: {
+                badge: "Flexibilidad & Accesibilidad",
+                badgeStyle: "bg-emerald-50 text-emerald-700 border-emerald-200",
+                iconBg: "from-emerald-500 to-teal-700",
+                title: "Clases ajustadas a ti",
+                subtitle: "Modalidades presenciales y virtuales adaptadas a tu horario.",
+                description: "Sabemos que tienes una agenda ocupada con la escuela y la familia. Por eso, Seminario ofrece opciones presenciales o virtuales en diferentes horarios para que puedas aprender a tu ritmo sin complicaciones.",
+                highlights: [
+                    "Horarios matutinos, vespertinos u opción en línea",
+                    "Plataformas amigables de fácil acceso",
+                    "Maestros y tutores empáticos listos para apoyarte"
+                ],
+                quote: "«Pude adaptar las clases fácilmente junto con mi horario escolar y mis actividades.»"
+            }
+        };
+
+        function selectTab(key) {
+            const data = tabData[key];
+            if (!data) return;
+
+            // Actualizar estado de los botones de pestañas
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.className = "tab-button flex-1 min-w-[160px] py-3 px-4 rounded-xl font-semibold text-xs sm:text-sm text-slate-600 hover:text-slate-900 hover:bg-white/60 transition-all duration-200 flex items-center justify-center gap-2";
+            });
+
+            const activeBtn = document.getElementById(`tab-btn-${key}`);
+            if (activeBtn) {
+                activeBtn.className = "tab-button flex-1 min-w-[160px] py-3 px-4 rounded-xl font-bold text-xs sm:text-sm transition-all duration-200 flex items-center justify-center gap-2 text-brandBlue-700 bg-white shadow-sm tab-glow";
+            }
+
+            // Inyectar contenido con animación
+            const container = document.getElementById('tab-content');
+            container.innerHTML = `
+                <div class="grid lg:grid-cols-12 gap-8 items-center animate-fade-in-slide">
+                    
+                    <!-- Columna Izquierda: Información Principal -->
+                    <div class="lg:col-span-7 space-y-4">
+                        <div class="flex items-center gap-2">
+                            <span class="inline-block text-[11px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full border ${data.badgeStyle}">
+                                ${data.badge}
+                            </span>
+                        </div>
+
+                        <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+                            ${data.title}
+                        </h3>
+
+                        <p class="text-slate-700 font-medium text-sm sm:text-base leading-snug">
+                            ${data.subtitle}
+                        </p>
+
+                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                            ${data.description}
+                        </p>
+
+                        <blockquote class="p-4 rounded-2xl bg-slate-50 border-l-4 border-brandBlue-600 text-slate-700 text-xs italic sm:text-sm">
+                            ${data.quote}
+                        </blockquote>
+                    </div>
+
+                    <!-- Columna Derecha: Puntos Clave / Beneficios -->
+                    <div class="lg:col-span-5 bg-slate-50/80 rounded-2xl p-5 sm:p-6 border border-slate-100 flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4 flex items-center gap-1.5">
+                                <svg class="w-4 h-4 text-brandBlue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                Lo que obtendrás:
+                            </h4>
+
+                            <ul class="space-y-3 mb-6">
+                                ${data.highlights.map(item => `
+                                    <li class="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 font-medium">
+                                        <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs shrink-0 mt-0.5">✓</span>
+                                        <span>${item}</span>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+
+                        <button onclick="showToast('Saber más sobre ' + '${data.title}')" class="w-full py-2.5 bg-white hover:bg-slate-100 text-slate-800 font-bold rounded-xl border border-slate-200 text-xs shadow-xs transition-all flex items-center justify-center gap-1.5">
+                            <span>Conocer detalles de esta opción</span>
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        </button>
+                    </div>
+
+                </div>
+            `;
+        }
+
+        function toggleModal(id) {
+            const modal = document.getElementById(id);
+            if (modal) {
+                modal.classList.toggle('hidden');
+            }
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast-msg');
+            const toastText = document.getElementById('toast-text');
+            toastText.textContent = message;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        function copyCode() {
+            const codeBox = document.getElementById('code-snippet-box');
+            const btnText = document.getElementById('copy-btn-text');
+            
+            const el = document.createElement('textarea');
+            el.value = codeBox.textContent;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+
+            btnText.textContent = "¡Copiado!";
+            setTimeout(() => {
+                btnText.textContent = "Copiar Código";
+            }, 2500);
+        }
+
+        // Cargar primera pestaña al iniciar y preparar el snippet
+        window.onload = function() {
+            selectTab('respuestas');
+            document.getElementById('code-snippet-box').textContent = document.querySelector('main').outerHTML;
+        };
+  

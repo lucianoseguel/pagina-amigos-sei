@@ -98,3 +98,7 @@ body {
     display: none; /* Oculta la comilla flotante en móviles para ahorrar espacio */
   }
 }
+
+#map-container{
+  margin: 3em auto;
+}
